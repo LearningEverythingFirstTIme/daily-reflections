@@ -1284,5 +1284,192 @@ export const reflections: Reflection[] = [
     quote: "Fear of people and of economic insecurity will leave us",
     source: "Promises, Alcoholics Anonymous p. 84",
     text: "I was terrified of people and constantly worried about money. Fear controlled my decisions and kept me trapped. But as I worked the program, I learned to trust in my Higher Power and the fellowship. I found that I could face people and financial challenges without being paralyzed by fear. Today, I am free from these fears."
+  },
+  // AUGUST
+  {
+    date: "August 1",
+    quote: "We will intuitively know how to handle situations which used to baffle us",
+    source: "Promises, Alcoholics Anonymous p. 84",
+    text: "Life used to overwhelm me. I didn't know how to handle relationships, work problems, or daily challenges without drinking. But the program gave me a new set of tools and a connection to a Higher Power that guides me. Now I often find myself knowing the right thing to do without having to think about it. Today, I trust my intuition."
+  },
+  {
+    date: "August 2",
+    quote: "We are going to know a new freedom and a new happiness",
+    source: "Promises, Alcoholics Anonymous p. 83",
+    text: "Freedom from the obsession to drink. Freedom from the bondage of self. Freedom to live a full and meaningful life. This is what recovery offers. And along with freedom comes a happiness I never knew was possible. Today, I embrace my new freedom and happiness."
+  },
+  {
+    date: "August 3",
+    quote: "We will not be ashamed of our pasts",
+    source: "Promises, Alcoholics Anonymous p. 84",
+    text: "Shame kept me drinking. I couldn't bear to face what I had done, so I kept drinking to forget. But the program taught me that I am not my past mistakes. I made amends where I could and learned to forgive myself. Today, I can talk about my past without shame because it led me to where I am now."
+  },
+  {
+    date: "August 4",
+    quote: "Acceptance is the answer to all my problems today",
+    source: "Alcoholics Anonymous p. 417",
+    text: "When I am disturbed, it is because I find some person, place, thing, or situation unacceptable to me. The Big Book tells me that acceptance is the answer. I don't have to like everything that happens, but I need to accept reality as it is. From acceptance, I can take appropriate action. Today, I practice acceptance."
+  },
+  {
+    date: "August 5",
+    quote: "And acceptance is the key to my problems today",
+    source: "Alcoholics Anonymous p. 417",
+    text: "Acceptance doesn't mean approval. It doesn't mean I agree with what happened or that I'm giving up. It simply means I acknowledge reality as it is. Once I accept what is, I can stop fighting against it and start working with it. Today, acceptance is my key to peace."
+  },
+  {
+    date: "August 6",
+    quote: "I can find no serenity until I accept that person, place, thing, or situation as being exactly the way it is supposed to be at this moment",
+    source: "Alcoholics Anonymous p. 417",
+    text: "Nothing happens in God's world by mistake. This belief helps me accept difficult situations. Even when I don't understand why something is happening, I can trust that it is part of a larger plan. My job is to accept and respond with grace. Today, I accept what is."
+  },
+  {
+    date: "August 7",
+    quote: "Nothing, absolutely nothing, happens in God's world by mistake",
+    source: "Alcoholics Anonymous p. 417",
+    text: "This statement requires faith. When bad things happen, my natural reaction is to think it's unfair or wrong. But if I truly believe that God is in charge, then I must accept that everything serves a purpose. This doesn't mean bad things are good, but that they can be used for growth. Today, I trust in God's plan."
+  },
+  {
+    date: "August 8",
+    quote: "Until I could accept my alcoholism, I could not stay sober",
+    source: "Alcoholics Anonymous p. 417",
+    text: "Acceptance of my alcoholism was essential for my recovery. I had to stop fighting the fact that I cannot drink like normal people. I had to accept that I have a disease that requires total abstinence. Once I truly accepted this, staying sober became possible. Today, I accept my alcoholism."
+  },
+  {
+    date: "August 9",
+    quote: "Unless I accept life completely on life's terms, I cannot be happy",
+    source: "Alcoholics Anonymous p. 417",
+    text: "I spent years trying to make life conform to my wishes. I wanted people to behave differently, circumstances to change, and reality to match my fantasies. But happiness came only when I stopped fighting reality and accepted life on its own terms. Today, I work on accepting what is."
+  },
+  {
+    date: "August 10",
+    quote: "I need to concentrate not so much on what needs to be changed in the world as on what needs to be changed in me and my attitudes",
+    source: "Alcoholics Anonymous p. 417",
+    text: "My natural tendency is to focus on what's wrong with others and the world around me. But the real work of recovery is internal. I need to change my attitudes, my reactions, and my perspective. When I change, the world looks different. Today, I focus on changing myself."
+  },
+  {
+    date: "August 11",
+    quote: "We are not saints",
+    source: "Alcoholics Anonymous p. 60",
+    text: "The Big Book reminds us that we are not saints. We are not perfect, and we don't need to be. The program is for imperfect people who are trying to improve. I will make mistakes, have bad days, and fall short of my ideals. That's okay. I just need to keep coming back and doing the best I can. Today, I accept my imperfections."
+  },
+  {
+    date: "August 12",
+    quote: "The point is, that we are willing to grow along spiritual lines",
+    source: "Alcoholics Anonymous p. 60",
+    text: "The program doesn't demand perfection - it demands willingness. Am I willing to grow? Am I willing to try? Am I willing to be honest and open-minded? If I have willingness, I have everything I need to recover. The growth will happen if I stay on the path. Today, I am willing to grow."
+  },
+  {
+    date: "August 13",
+    quote: "We claim spiritual progress rather than spiritual perfection",
+    source: "Alcoholics Anonymous p. 60",
+    text: "I used to think I had to be perfect to be a good member of AA. But the Big Book tells me to aim for progress, not perfection. I am becoming better, not perfect. Each day I grow a little more spiritually. I may never arrive at perfection, but I'm moving in the right direction. Today, I celebrate my progress."
+  },
+  {
+    date: "August 14",
+    quote: "We have entered the world of the Spirit",
+    source: "Alcoholics Anonymous p. 84",
+    text: "Before AA, I lived entirely in the material world. I was concerned with things, appearances, and external achievements. But the program introduced me to a spiritual dimension of life. I discovered that there is more to existence than what I can see and touch. Today, I live in the world of the Spirit."
+  },
+  {
+    date: "August 15",
+    quote: "We have been rocketed into a fourth dimension of existence",
+    source: "Alcoholics Anonymous p. 84",
+    text: "The Big Book describes recovery as being rocketed into a fourth dimension. This is the spiritual dimension - a way of living that transcends the ordinary material world. I have experienced moments of pure joy, deep peace, and profound connection that I never knew existed. Today, I am grateful for this spiritual awakening."
+  },
+  {
+    date: "August 16",
+    quote: "We have been granted a gift which amounts to a new state of consciousness and being",
+    source: "Alcoholics Anonymous p. 106",
+    text: "Recovery has given me more than just sobriety. It has given me a completely new way of seeing and being in the world. My consciousness has been transformed. I think differently, feel differently, and act differently than I did when I was drinking. Today, I am grateful for this new state of being."
+  },
+  {
+    date: "August 17",
+    quote: "We have recovered from a seemingly hopeless state of mind and body",
+    source: "Alcoholics Anonymous p. 60",
+    text: "The word 'recovered' is important. I have recovered from alcoholism. I am not recovering or in recovery - I have recovered. The illness has been arrested. As long as I maintain my spiritual condition, I am free from the compulsion to drink. Today, I am recovered."
+  },
+  {
+    date: "August 18",
+    quote: "We feel we are on the Broad Highway, walking hand in hand with the Spirit of the Universe",
+    source: "Alcoholics Anonymous p. 75",
+    text: "The spiritual path is not a narrow, difficult road but a broad highway. I walk this path with the guidance of my Higher Power. I am not alone; I am accompanied by the Spirit of the Universe. This gives me courage and comfort as I travel through life. Today, I walk hand in hand with my Higher Power."
+  },
+  {
+    date: "August 19",
+    quote: "The central fact of our lives today is the absolute certainty that our Creator has entered into our hearts and lives",
+    source: "Alcoholics Anonymous p. 25",
+    text: "The presence of a Higher Power in my life is the central fact of my existence. This is not just a belief or a hope - it is a certainty. God has entered my heart and transformed my life. This is the miracle of recovery. Today, I am grateful for the miraculous presence of my Higher Power."
+  },
+  {
+    date: "August 20",
+    quote: "He has commenced to accomplish those things for us which we could never do by ourselves",
+    source: "Alcoholics Anonymous p. 25",
+    text: "I tried for years to fix myself. I tried willpower, self-help books, and sheer determination. Nothing worked until I allowed my Higher Power to help me. God is doing for me what I could not do for myself. I just had to get out of the way and let it happen. Today, I let God work in my life."
+  },
+  {
+    date: "August 21",
+    quote: "We trust infinite God rather than our finite selves",
+    source: "Alcoholics Anonymous p. 68",
+    text: "My self-reliance led me to alcoholism. I thought I could handle everything myself. But I was finite, limited, and ultimately powerless over alcohol. Recovery taught me to trust in an infinite God who has no limitations. God's power is available to me if I am willing to ask and receive. Today, I trust in God's infinite power."
+  },
+  {
+    date: "August 22",
+    quote: "We will suddenly realize that God is doing for us what we could not do for ourselves",
+    source: "Alcoholics Anonymous p. 84",
+    text: "There came a moment in my recovery when I realized that something had changed. I wasn't white-knuckling my way through sobriety anymore. God was doing for me what I could never do for myself. The obsession had been removed. This is the miracle of the program. Today, I am grateful for God's work in my life."
+  },
+  {
+    date: "August 23",
+    quote: "We are not cured of alcoholism. What we really have is a daily reprieve contingent on the maintenance of our spiritual condition",
+    source: "Alcoholics Anonymous p. 85",
+    text: "Recovery is not a cure. I am not magically transformed into a normal drinker. What I have is a daily reprieve - a 24-hour period of freedom from the compulsion to drink. But this reprieve depends on my spiritual condition. If I stop practicing the principles, I am in danger. Today, I maintain my spiritual condition."
+  },
+  {
+    date: "August 24",
+    quote: "Every day is a day when we must carry the vision of God's will into all of our activities",
+    source: "Alcoholics Anonymous p. 85",
+    text: "Recovery isn't just about not drinking - it's about living in God's will throughout my day. Whether I'm at work, with family, or alone, I try to carry this vision with me. How would my Higher Power have me act in this situation? This is the practice of the Eleventh Step in daily life. Today, I carry God's will into all my activities."
+  },
+  {
+    date: "August 25",
+    quote: "How can I best serve Thee - Thy will (not mine) be done",
+    source: "Alcoholics Anonymous p. 85",
+    text: "This is the prayer that guides my day. Instead of asking God to give me what I want, I ask how I can serve. Instead of demanding my will be done, I surrender to God's will. This simple prayer reorients my entire day from self-centeredness to service. Today, I ask how I can best serve my Higher Power."
+  },
+  {
+    date: "August 26",
+    quote: "We are not fighting it, neither are we avoiding temptation. We feel as though we had been placed in a position of neutrality - safe and protected",
+    source: "Alcoholics Anonymous p. 85",
+    text: "In early sobriety, I was fighting cravings every day. It was exhausting. But as I worked the program, something shifted. I no longer felt like I was in a battle. I felt safe and protected, as if I had been placed in a neutral position where alcohol no longer had power over me. Today, I rest in this place of neutrality."
+  },
+  {
+    date: "August 27",
+    quote: "The problem has been removed. It does not exist for us",
+    source: "Alcoholics Anonymous p. 85",
+    text: "The problem of alcohol has been removed from my life. Not through my own power, but through the power of the program and my Higher Power. I don't have to fight against drinking because the desire has been lifted. This is the freedom that recovery offers. Today, I am free from the problem of alcohol."
+  },
+  {
+    date: "August 28",
+    quote: "We have not even sworn off. Instead, the problem has been removed",
+    source: "Alcoholics Anonymous p. 85",
+    text: "I didn't just swear off alcohol with a vow of willpower. That never worked for me before. Instead, the problem was actually removed from my life. The obsession, the compulsion, the mental twist - all lifted by a power greater than myself. I am not white-knuckling; I am free. Today, I am grateful for this removal."
+  },
+  {
+    date: "August 29",
+    quote: "It is not a matter of giving anything up. It is a matter of being given something else instead",
+    source: "Alcoholics Anonymous p. 85",
+    text: "I used to think sobriety meant giving up the thing I loved most. But I was wrong. I didn't give up anything - I was given something far better in return. I traded my misery for peace, my isolation for fellowship, my hopelessness for purpose. Today, I am grateful for what I have been given."
+  },
+  {
+    date: "August 30",
+    quote: "We have been born anew",
+    source: "Alcoholics Anonymous p. 85",
+    text: "Recovery feels like being born again into a new life. The old me - the drunk, the liar, the thief - is gone. A new person has emerged, someone capable of honesty, integrity, and love. This is the transformation that the program promises. Today, I embrace my new life."
+  },
+  {
+    date: "August 31",
+    quote: "We are breathing the rarefied air of the spiritual life",
+    source: "Alcoholics Anonymous p. 85",
+    text: "The spiritual life is different from ordinary existence. It's like breathing rarefied air - clearer, purer, more alive. I am no longer just surviving; I am truly living. The spiritual dimension gives depth and meaning to everything I do. Today, I breathe this spiritual air."
   }
 ];
