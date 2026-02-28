@@ -145,6 +145,7 @@ function App() {
             <div className="bg-brutal-accent2 text-white font-heading font-bold px-4 py-2 border-2 border-brutal-dark">
               {reflection.date}
             </div>
+            
             <div className="flex items-center gap-2">
               <span className="font-body text-sm text-brutal-text/60">
                 {currentIndex + 1} / {reflections.length}
@@ -232,7 +233,7 @@ function App() {
                     className="text-left bg-white border-2 border-brutal-dark p-3 hover:bg-brutal-bg transition-colors"
                     onClick={() => setCurrentIndex(index)}
                   >
-                    <p className="font-heading font-medium text-sm truncate">"{fav.quote}"</p>
+                    <p className="font-heading font-medium text-sm truncate">"{fav.quote}"</p>
                     <p className="font-body text-xs text-brutal-text/60 mt-1">{fav.date}</p>
                   </button>
                 );
