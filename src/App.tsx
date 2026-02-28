@@ -177,10 +177,10 @@ function App() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t-2 border-brutal-dark/10">
-            <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between gap-4 pt-6 border-t-2 border-brutal-dark/10">
+            <div className="flex items-center gap-2">
               <button 
-                className={`brutal-btn text-sm py-2 px-4 flex items-center gap-2 ${isFavorite ? 'bg-brutal-accent4' : ''}`}
+                className={`brutal-btn text-sm py-2 px-3 flex items-center gap-2 ${isFavorite ? 'bg-brutal-accent4' : ''}`}
                 onClick={toggleFavorite}
               >
                 <Heart className={`w-4 h-4 favorite-btn ${isFavorite ? 'fill-current' : ''}`} />
@@ -188,7 +188,7 @@ function App() {
               </button>
               
               <button 
-                className="brutal-btn-secondary text-sm py-2 px-4 flex items-center gap-2"
+                className="brutal-btn-secondary text-sm py-2 px-3 flex items-center gap-2"
                 onClick={shareReflection}
               >
                 <Share2 className="w-4 h-4 share-btn" />
@@ -196,11 +196,12 @@ function App() {
               </button>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-shrink-0">
               <button 
                 className="brutal-btn-secondary py-2 px-3"
                 onClick={() => handleNavigation('prev')}
                 disabled={isAnimating}
+                aria-label="Previous reflection"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -209,6 +210,7 @@ function App() {
                 className="brutal-btn py-2 px-3"
                 onClick={() => handleNavigation('next')}
                 disabled={isAnimating}
+                aria-label="Next reflection"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
