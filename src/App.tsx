@@ -177,26 +177,26 @@ function App() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex items-center justify-between gap-4 pt-6 border-t-2 border-brutal-dark/10">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 border-t-2 border-brutal-dark/10">
+            <div className="flex items-center gap-2 w-full sm:w-auto justify-center">
               <button 
-                className={`brutal-btn text-sm py-2 px-3 flex items-center gap-2 ${isFavorite ? 'bg-brutal-accent4' : ''}`}
+                className={`brutal-btn text-sm py-2 px-3 flex items-center gap-1 ${isFavorite ? 'bg-brutal-accent4' : ''}`}
                 onClick={toggleFavorite}
               >
                 <Heart className={`w-4 h-4 favorite-btn ${isFavorite ? 'fill-current' : ''}`} />
-                {isFavorite ? 'Saved' : 'Save'}
+                <span className="hidden sm:inline">{isFavorite ? 'Saved' : 'Save'}</span>
               </button>
               
               <button 
-                className="brutal-btn-secondary text-sm py-2 px-3 flex items-center gap-2"
+                className="brutal-btn-secondary text-sm py-2 px-3 flex items-center gap-1"
                 onClick={shareReflection}
               >
                 <Share2 className="w-4 h-4 share-btn" />
-                Copy
+                <span className="hidden sm:inline">Copy</span>
               </button>
             </div>
 
-            <div className="flex items-center gap-2 flex-shrink-0">
+            <div className="flex items-center gap-2">
               <button 
                 className="brutal-btn-secondary py-2 px-3"
                 onClick={() => handleNavigation('prev')}
