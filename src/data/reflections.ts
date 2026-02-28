@@ -10,7 +10,7 @@ export const reflections: Reflection[] = [
     date: "January 1",
     quote: "I am responsible for my own recovery.",
     source: "Basic Text, p. 108",
-    text: "When I came to Narcotics Anonymous, I was beaten and broken. I thought the program would fix me. I expected the steps to magically make me whole. But I learned that recovery is not something that happens to meâ€”it's something I do. Each day, I make choices that support my recovery. I go to meetings. I work the steps. I reach out to others. I am no longer a victim of my addiction; I am an active participant in my own healing. Today, I take responsibility for my recovery."
+    text: "When I came to Narcotics Anonymous, I was beaten and broken. I thought the program would fix me. I expected the steps to magically make me whole. But I learned that recovery is not something that happens to me—it's something I do. Each day, I make choices that support my recovery. I go to meetings. I work the steps. I reach out to others. I am no longer a victim of my addiction; I am an active participant in my own healing. Today, I take responsibility for my recovery."
   },
   {
     date: "January 2", 
@@ -52,7 +52,7 @@ export const reflections: Reflection[] = [
     date: "January 8",
     quote: "We found that we could not stop using by willpower alone.",
     source: "Basic Text, p. 20",
-    text: "I tried everything to control my using. I switched drugs, changed dealers, moved to new cities, and made countless promises to myself and others. Nothing worked. I couldn't understand why I kept failing when I had such strong determination. In NA, I learned that addiction is not a moral failing or a lack of willpowerâ€”it's a disease. And like any disease, it requires treatment. The Twelve Steps are my treatment. Today, I work the steps rather than relying on willpower."
+    text: "I tried everything to control my using. I switched drugs, changed dealers, moved to new cities, and made countless promises to myself and others. Nothing worked. I couldn't understand why I kept failing when I had such strong determination. In NA, I learned that addiction is not a moral failing or a lack of willpower—it's a disease. And like any disease, it requires treatment. The Twelve Steps are my treatment. Today, I work the steps rather than relying on willpower."
   },
   {
     date: "January 9",
@@ -64,7 +64,7 @@ export const reflections: Reflection[] = [
     date: "January 10",
     quote: "The steps are our solution.",
     source: "Basic Text, p. 17",
-    text: "When I came to NA, I wanted a quick fix. I wanted a pill or a technique that would make me normal. But recovery doesn't work that way. The Twelve Steps are not a quick fixâ€”they are a design for living that works in good times and bad. Each step builds on the one before it, creating a foundation for a new life. Working the steps is not always easy, but it is always worth it. Today, I work all Twelve Steps to the best of my ability."
+    text: "When I came to NA, I wanted a quick fix. I wanted a pill or a technique that would make me normal. But recovery doesn't work that way. The Twelve Steps are not a quick fix—they are a design for living that works in good times and bad. Each step builds on the one before it, creating a foundation for a new life. Working the steps is not always easy, but it is always worth it. Today, I work all Twelve Steps to the best of my ability."
   },
   {
     date: "January 11",
@@ -76,7 +76,7 @@ export const reflections: Reflection[] = [
     date: "January 12",
     quote: "Progress, not perfection.",
     source: "Narcotics Anonymous Fellowship",
-    text: "I used to beat myself up for not being perfect. If I made a mistake in my step work, I thought I had failed. If I had a bad day emotionally, I thought I was doing recovery wrong. But recovery is not about being perfect; it's about making progress. Each day that I stay clean, I am moving forward. Each meeting I attend, each step I work, each addict I helpâ€”it all adds up to progress. Today, I celebrate my progress rather than demanding perfection."
+    text: "I used to beat myself up for not being perfect. If I made a mistake in my step work, I thought I had failed. If I had a bad day emotionally, I thought I was doing recovery wrong. But recovery is not about being perfect; it's about making progress. Each day that I stay clean, I am moving forward. Each meeting I attend, each step I work, each addict I help—it all adds up to progress. Today, I celebrate my progress rather than demanding perfection."
   },
   {
     date: "January 13",
@@ -88,7 +88,7 @@ export const reflections: Reflection[] = [
     date: "January 14",
     quote: "Courage is not the absence of fear, but the willingness to walk through it.",
     source: "It Works: How and Why, p. 100",
-    text: "I was terrified when I came to NA. I was afraid of withdrawal, of facing my past, of living without drugs. But I found the courage to keep coming back anyway. I discovered that courage doesn't mean not being scaredâ€”it means acting despite the fear. Each time I walked through the doors of a meeting despite my anxiety, I built courage. Each time I shared honestly despite my fear of judgment, I grew stronger. Today, I walk through my fears rather than running from them."
+    text: "I was terrified when I came to NA. I was afraid of withdrawal, of facing my past, of living without drugs. But I found the courage to keep coming back anyway. I discovered that courage doesn't mean not being scared—it means acting despite the fear. Each time I walked through the doors of a meeting despite my anxiety, I built courage. Each time I shared honestly despite my fear of judgment, I grew stronger. Today, I walk through my fears rather than running from them."
   },
   {
     date: "January 15",
@@ -130,7 +130,7 @@ export const reflections: Reflection[] = [
     date: "January 21",
     quote: "We practice principles in all our affairs.",
     source: "Step Twelve",
-    text: "Recovery doesn't stop when I leave the meeting. The principles I learn in NAâ€”honesty, open-mindedness, willingness, humilityâ€”are meant to be practiced in every area of my life. I practice honesty at work, patience with my family, and tolerance in traffic. The more I apply these principles, the better my life becomes. The program becomes not just something I do, but who I am. Today, I practice spiritual principles in all my affairs."
+    text: "Recovery doesn't stop when I leave the meeting. The principles I learn in NA—honesty, open-mindedness, willingness, humility—are meant to be practiced in every area of my life. I practice honesty at work, patience with my family, and tolerance in traffic. The more I apply these principles, the better my life becomes. The program becomes not just something I do, but who I am. Today, I practice spiritual principles in all my affairs."
   },
   {
     date: "January 22",
@@ -154,7 +154,7 @@ export const reflections: Reflection[] = [
     date: "January 25",
     quote: "We learn to live life on life's terms.",
     source: "Basic Text, p. 86",
-    text: "I used drugs to escape from reality. When things got difficult, I got high. When emotions were painful, I numbed them. But in recovery, I learned that I can't control lifeâ€”I can only control how I respond to it. Life will have ups and downs, joys and sorrows. The question is not whether challenges will come, but whether I will face them clean. Today, I accept life on life's terms and face whatever comes my way without using."
+    text: "I used drugs to escape from reality. When things got difficult, I got high. When emotions were painful, I numbed them. But in recovery, I learned that I can't control life—I can only control how I respond to it. Life will have ups and downs, joys and sorrows. The question is not whether challenges will come, but whether I will face them clean. Today, I accept life on life's terms and face whatever comes my way without using."
   },
   {
     date: "January 26",
@@ -166,7 +166,7 @@ export const reflections: Reflection[] = [
     date: "January 27",
     quote: "We are granted a daily reprieve from our addiction.",
     source: "Basic Text, p. 85",
-    text: "My recovery is not guaranteed. It is not something I earned once and get to keep forever. It is a daily reprieve, contingent on my spiritual condition. Each morning, I wake up with a clean slate and a choice. If I do the workâ€”go to meetings, work the steps, help othersâ€”I stay clean for that day. But if I get complacent and stop doing the work, the reprieve can be lost. Today, I do what is necessary to maintain my daily reprieve."
+    text: "My recovery is not guaranteed. It is not something I earned once and get to keep forever. It is a daily reprieve, contingent on my spiritual condition. Each morning, I wake up with a clean slate and a choice. If I do the work—go to meetings, work the steps, help others—I stay clean for that day. But if I get complacent and stop doing the work, the reprieve can be lost. Today, I do what is necessary to maintain my daily reprieve."
   },
   {
     date: "January 28",
@@ -178,13 +178,13 @@ export const reflections: Reflection[] = [
     date: "January 29",
     quote: "We recover by working the Twelve Steps in our lives.",
     source: "Basic Text, p. 20",
-    text: "The steps are not just something to read about or discussâ€”they are something to live. Each step is designed to help me grow spiritually and emotionally. When I work the steps honestly and thoroughly, my life changes. My relationships improve. My character defects lessen. My peace of mind increases. The steps are the path from the darkness of addiction to the light of recovery. Today, I actively work all Twelve Steps."
+    text: "The steps are not just something to read about or discuss—they are something to live. Each step is designed to help me grow spiritually and emotionally. When I work the steps honestly and thoroughly, my life changes. My relationships improve. My character defects lessen. My peace of mind increases. The steps are the path from the darkness of addiction to the light of recovery. Today, I actively work all Twelve Steps."
   },
   {
     date: "January 30",
     quote: "We never have to use again, no matter what.",
     source: "Basic Text, p. 106",
-    text: "This is the promise of NA. No matter what happens in my lifeâ€”loss, pain, disappointment, tragedyâ€”I never have to use again. The program gives me tools to face anything without picking up. I have a fellowship to support me, a sponsor to guide me, and steps to work. There is no situation so dire that using would improve it. Today, I hold onto this promise: no matter what, I don't have to use."
+    text: "This is the promise of NA. No matter what happens in my life—loss, pain, disappointment, tragedy—I never have to use again. The program gives me tools to face anything without picking up. I have a fellowship to support me, a sponsor to guide me, and steps to work. There is no situation so dire that using would improve it. Today, I hold onto this promise: no matter what, I don't have to use."
   },
   {
     date: "January 31",
