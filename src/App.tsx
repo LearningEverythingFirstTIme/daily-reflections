@@ -1,12 +1,18 @@
 import { useEffect, useState, useRef } from 'react';
 import { gsap } from 'gsap';
-import { Calendar, BookOpen, Heart, Share2, ChevronLeft, ChevronRight, Sparkles, ArrowLeft, Trash2 } from 'lucide-react';
+import { Calendar, BookOpen, Heart, Share2, ChevronLeft, ChevronRight, Sparkles, ArrowLeft, Trash2, Palette } from 'lucide-react';
 import { reflections } from './data/reflections';
+import { themes, defaultTheme, type Theme } from './data/themes';
 
 type View = 'daily' | 'saved';
 
 function App() {
   const [view, setView] = useState<View>('daily');
+  const [showThemePicker, setShowThemePicker] = useState(false);
+  const [theme, setTheme] = useState<Theme>(() => {
+    const saved = localStorage.getItem('aa-theme');
+    return saved ? themes.find(t => t.id === saved) || defaultTheme : defaultTheme;
+  });
   
   const getTodayIndex = () => {
     const today = new Date();
@@ -31,24 +37,33 @@ function App() {
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const calendarRef = useRef<HTMLDivElement>(null);
+  const themeRef = useRef<HTMLDivElement>(null);
   const reflection = reflections[currentIndex];
 
-  // Close calendar when clicking outside
+  // Save theme preference
+  useEffect(() => {
+    localStorage.setItem('aa-theme', theme.id);
+  }, [theme]);
+
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (calendarRef.current && !calendarRef.current.contains(event.target as Node)) {
         setShowCalendar(false);
       }
+      if (themeRef.current && !themeRef.current.contains(event.target as Node)) {
+        setShowThemePicker(false);
+      }
     };
     
-    if (showCalendar) {
+    if (showCalendar || showThemePicker) {
       document.addEventListener('mousedown', handleClickOutside);
     }
     
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [showCalendar]);
+  }, [showCalendar, showThemePicker]);
 
   useEffect(() => {
     localStorage.setItem('aa-favorites', JSON.stringify(favorites));
@@ -75,7 +90,7 @@ function App() {
     }, containerRef);
     
     return () => ctx.revert();
-  }, [currentIndex, view]);
+  }, [currentIndex, view, theme]);
 
   const handleNavigation = (direction: 'prev' | 'next') => {
     if (isAnimating) return;
@@ -166,35 +181,116 @@ function App() {
     .map(r => parseInt(r.date.split(' ')[1]));
   const maxDay = Math.max(...daysInMonth);
 
+  // Generate dynamic styles based on theme
+  const dynamicStyles = {
+    bg: { backgroundColor: theme.colors.bg },
+    card: { 
+      backgroundColor: theme.colors.card,
+      borderRadius: theme.borderRadius,
+      borderWidth: theme.borderWidth,
+      borderColor: theme.colors.border,
+      boxShadow: `${theme.shadowStyle} ${theme.colors.shadow}`,
+    },
+    header: {
+      backgroundColor: theme.colors.headerBg,
+      borderRadius: theme.borderRadius,
+      borderWidth: theme.borderWidth,
+      borderColor: theme.colors.border,
+    },
+    buttonPrimary: {
+      backgroundColor: theme.colors.buttonPrimary,
+      color: '#FFFFFF',
+      borderRadius: theme.borderRadius,
+      borderWidth: theme.borderWidth,
+      borderColor: theme.id === 'neobrutalist' ? theme.colors.border : 'transparent',
+      boxShadow: theme.id === 'neobrutalist' ? `2px 2px 0px 0px ${theme.colors.shadow}` : 'none',
+    },
+    buttonSecondary: {
+      backgroundColor: theme.colors.buttonSecondary,
+      color: '#FFFFFF',
+      borderRadius: theme.borderRadius,
+      borderWidth: theme.borderWidth,
+      borderColor: theme.id === 'neobrutalist' ? theme.colors.border : 'transparent',
+      boxShadow: theme.id === 'neobrutalist' ? `2px 2px 0px 0px ${theme.colors.shadow}` : 'none',
+    },
+    accent: { backgroundColor: theme.colors.accent },
+    accent2: { backgroundColor: theme.colors.accent2 },
+    accent3: { backgroundColor: theme.colors.accent3 },
+    accent4: { backgroundColor: theme.colors.accent4 },
+    text: { color: theme.colors.text },
+    textMuted: { color: theme.colors.textMuted },
+  };
+
   // Saved Entries View
   if (view === 'saved') {
     return (
-      <div ref={containerRef} className="min-h-screen bg-brutal-bg p-4 md:p-8">
+      <div ref={containerRef} className="min-h-screen p-4 md:p-8 transition-colors duration-300" style={dynamicStyles.bg}>
         {/* Header */}
         <header className="max-w-4xl mx-auto mb-8">
-          <div className="brutal-panel bg-brutal-accent p-6 md:p-8">
+          <div className="p-6 md:p-8" style={dynamicStyles.header}>
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div className="flex items-center gap-4">
-                <div className="bg-white p-3 border-2 border-brutal-dark">
-                  <Heart className="w-8 h-8 text-brutal-accent fill-brutal-accent" />
+                <div className="p-3" style={{ backgroundColor: theme.colors.card, borderRadius: theme.borderRadius, borderWidth: theme.borderWidth, borderColor: theme.colors.border }}>
+                  <Heart className="w-8 h-8" style={{ color: theme.colors.accent }} fill={theme.colors.accent} />
                 </div>
                 <div>
-                  <h1 className="font-heading font-bold text-2xl md:text-3xl text-white">
+                  <h1 className={`font-bold text-2xl md:text-3xl text-white ${theme.fonts.heading}`}>
                     Saved Entries
                   </h1>
-                  <p className="font-body text-white/80 text-sm">
+                  <p className={`text-white/80 text-sm ${theme.fonts.body}`}>
                     {favorites.length} reflection{favorites.length !== 1 ? 's' : ''} saved
                   </p>
                 </div>
               </div>
               
-              <button 
-                className="brutal-btn-secondary text-sm py-2 px-4"
-                onClick={() => setView('daily')}
-              >
-                <ArrowLeft className="w-4 h-4 inline mr-2" />
-                Back to Daily
-              </button>
+              <div className="flex items-center gap-2">
+                <div className="relative" ref={themeRef}>
+                  <button 
+                    className="font-bold py-2 px-4 transition-all hover:opacity-90"
+                    style={dynamicStyles.buttonSecondary}
+                    onClick={() => setShowThemePicker(!showThemePicker)}
+                  >
+                    <Palette className="w-4 h-4 inline mr-2" />
+                    Theme
+                  </button>
+                  
+                  {showThemePicker && (
+                    <div className="absolute right-0 top-full mt-2 p-4 z-50 w-72" style={{ ...dynamicStyles.card, backgroundColor: theme.colors.card }}>
+                      <h3 className={`font-bold text-lg mb-3 ${theme.fonts.heading}`} style={dynamicStyles.text}>Select Theme</h3>
+                      {themes.map(t => (
+                        <button
+                          key={t.id}
+                          onClick={() => { setTheme(t); setShowThemePicker(false); }}
+                          className={`w-full text-left p-3 mb-2 rounded transition-all ${theme.id === t.id ? 'ring-2' : ''}`}
+                          style={{ 
+                            backgroundColor: theme.id === t.id ? theme.colors.accent + '20' : theme.colors.bg,
+                            borderRadius: theme.borderRadius,
+                            borderWidth: theme.borderWidth,
+                            borderColor: theme.colors.border,
+                          }}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded flex-shrink-0" style={{ backgroundColor: t.colors.accent, borderRadius: t.borderRadius }} />
+                            <div>
+                              <p className={`font-bold text-sm ${theme.fonts.heading}`} style={dynamicStyles.text}>{t.name}</p>
+                              <p className={`text-xs ${theme.fonts.body}`} style={dynamicStyles.textMuted}>{t.description}</p>
+                            </div>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                
+                <button 
+                  className="font-bold py-2 px-4 transition-all hover:opacity-90"
+                  style={dynamicStyles.buttonPrimary}
+                  onClick={() => setView('daily')}
+                >
+                  <ArrowLeft className="w-4 h-4 inline mr-2" />
+                  Back to Daily
+                </button>
+              </div>
             </div>
           </div>
         </header>
@@ -202,16 +298,17 @@ function App() {
         {/* Saved Entries List */}
         <main className="max-w-4xl mx-auto px-2 sm:px-0">
           {favorites.length === 0 ? (
-            <div className="brutal-card bg-white text-center py-16">
-              <Heart className="w-16 h-16 text-brutal-text/20 mx-auto mb-4" />
-              <h2 className="font-heading font-bold text-xl text-brutal-text/60 mb-2">
+            <div className="p-8 text-center" style={dynamicStyles.card}>
+              <Heart className="w-16 h-16 mx-auto mb-4" style={{ color: theme.colors.textMuted }} />
+              <h2 className={`font-bold text-xl mb-2 ${theme.fonts.heading}`} style={dynamicStyles.text}>
                 No Saved Entries Yet
               </h2>
-              <p className="font-body text-brutal-text/50 mb-6">
+              <p className={`mb-6 ${theme.fonts.body}`} style={dynamicStyles.textMuted}>
                 Click the heart button on any reflection to save it here.
               </p>
               <button 
-                className="brutal-btn-primary"
+                className="font-bold py-3 px-6 transition-all hover:opacity-90"
+                style={dynamicStyles.buttonPrimary}
                 onClick={() => setView('daily')}
               >
                 Browse Reflections
@@ -224,27 +321,31 @@ function App() {
                 return (
                   <div
                     key={index}
-                    className="brutal-card bg-white hover:shadow-brutal-hover transition-shadow"
+                    className="p-6 transition-shadow hover:shadow-lg"
+                    style={dynamicStyles.card}
                   >
                     <div className="flex items-start gap-4">
-                      <div className="bg-brutal-accent2 text-white font-heading font-bold px-3 py-2 border-2 border-brutal-dark text-sm flex-shrink-0">
+                      <div className="font-bold px-3 py-2 text-sm flex-shrink-0 text-white" 
+                        style={{ backgroundColor: theme.colors.accent2, borderRadius: theme.borderRadius, borderWidth: theme.borderWidth, borderColor: theme.colors.border }}>
                         {fav.date}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <blockquote className="font-heading text-lg font-medium text-brutal-dark mb-2">
+                        <blockquote className={`text-lg font-medium mb-2 ${theme.fonts.heading}`} style={dynamicStyles.text}>
                           "{fav.quote}"
                         </blockquote>
-                        <p className="font-body text-sm text-brutal-text/70 mb-3">
+                        <p className={`text-sm mb-3 ${theme.fonts.body}`} style={dynamicStyles.textMuted}>
                           {fav.source}
                         </p>
-                        <p className="font-body text-sm text-brutal-text/80 line-clamp-2">
+                        <p className={`text-sm line-clamp-2 ${theme.fonts.body}`} style={dynamicStyles.textMuted}>
                           {fav.text}
                         </p>
                       </div>
                     </div>
-                    <div className="flex items-center justify-end gap-2 mt-4 pt-4 border-t-2 border-brutal-dark/10">
+                    
+                    <div className="flex items-center justify-end gap-2 mt-4 pt-4" style={{ borderTopWidth: theme.borderWidth, borderColor: theme.colors.border }}>
                       <button
-                        className="action-btn bg-brutal-accent text-white font-heading font-bold px-4 py-2 border-2 border-brutal-dark shadow-brutal text-sm"
+                        className="font-bold px-4 py-2 text-sm transition-all hover:opacity-90"
+                        style={dynamicStyles.buttonPrimary}
                         onClick={() => {
                           setCurrentIndex(index);
                           setView('daily');
@@ -253,7 +354,8 @@ function App() {
                         View Full
                       </button>
                       <button
-                        className="action-btn bg-brutal-accent4 text-white font-heading font-bold px-3 py-2 border-2 border-brutal-dark shadow-brutal"
+                        className="font-bold px-3 py-2 transition-all hover:opacity-90"
+                        style={{ ...dynamicStyles.buttonSecondary, backgroundColor: theme.colors.accent4 }}
                         onClick={(e) => removeFavorite(index, e)}
                         title="Remove from saved"
                       >
@@ -269,7 +371,7 @@ function App() {
 
         {/* Footer */}
         <footer className="max-w-4xl mx-auto mt-12 text-center">
-          <p className="font-body text-sm text-brutal-text/50">
+          <p className={`text-sm ${theme.fonts.body}`} style={dynamicStyles.textMuted}>
             AA Daily Reflections · One Day at a Time
           </p>
         </footer>
@@ -279,20 +381,20 @@ function App() {
 
   // Daily View
   return (
-    <div ref={containerRef} className="min-h-screen bg-brutal-bg p-4 md:p-8">
+    <div ref={containerRef} className="min-h-screen p-4 md:p-8 transition-colors duration-300" style={dynamicStyles.bg}>
       {/* Header */}
       <header className="max-w-4xl mx-auto mb-8">
-        <div className="brutal-panel bg-brutal-accent p-6 md:p-8">
+        <div className="p-6 md:p-8" style={dynamicStyles.header}>
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="flex items-center gap-4">
-              <div className="bg-white p-3 border-2 border-brutal-dark">
-                <BookOpen className="w-8 h-8 text-brutal-accent" />
+              <div className="p-3" style={{ backgroundColor: theme.colors.card, borderRadius: theme.borderRadius, borderWidth: theme.borderWidth, borderColor: theme.colors.border }}>
+                <BookOpen className="w-8 h-8" style={{ color: theme.colors.accent }} />
               </div>
               <div>
-                <h1 className="font-heading font-bold text-2xl md:text-3xl text-white">
+                <h1 className={`font-bold text-2xl md:text-3xl text-white ${theme.fonts.heading}`}>
                   Daily Reflections
                 </h1>
-                <p className="font-body text-white/80 text-sm">
+                <p className={`text-white/80 text-sm ${theme.fonts.body}`}>
                   {new Date().toLocaleDateString('en-US', { 
                     weekday: 'long', 
                     year: 'numeric', 
@@ -304,9 +406,48 @@ function App() {
             </div>
             
             <div className="flex items-center gap-2">
+              <div className="relative" ref={themeRef}>
+                <button 
+                  className="font-bold py-2 px-4 transition-all hover:opacity-90"
+                  style={dynamicStyles.buttonSecondary}
+                  onClick={() => setShowThemePicker(!showThemePicker)}
+                >
+                  <Palette className="w-4 h-4 inline mr-2" />
+                  Theme
+                </button>
+                
+                {showThemePicker && (
+                  <div className="absolute right-0 top-full mt-2 p-4 z-50 w-72" style={{ ...dynamicStyles.card, backgroundColor: theme.colors.card }}>
+                    <h3 className={`font-bold text-lg mb-3 ${theme.fonts.heading}`} style={dynamicStyles.text}>Select Theme</h3>
+                    {themes.map(t => (
+                      <button
+                        key={t.id}
+                        onClick={() => { setTheme(t); setShowThemePicker(false); }}
+                        className={`w-full text-left p-3 mb-2 rounded transition-all ${theme.id === t.id ? 'ring-2' : ''}`}
+                        style={{ 
+                          backgroundColor: theme.id === t.id ? theme.colors.accent + '20' : theme.colors.bg,
+                          borderRadius: theme.borderRadius,
+                          borderWidth: theme.borderWidth,
+                          borderColor: theme.colors.border,
+                        }}
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded flex-shrink-0" style={{ backgroundColor: t.colors.accent, borderRadius: t.borderRadius }} />
+                          <div>
+                            <p className={`font-bold text-sm ${theme.fonts.heading}`} style={dynamicStyles.text}>{t.name}</p>
+                            <p className={`text-xs ${theme.fonts.body}`} style={dynamicStyles.textMuted}>{t.description}</p>
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+              
               <div className="relative" ref={calendarRef}>
                 <button 
-                  className="brutal-btn-secondary text-sm py-2 px-4"
+                  className="font-bold py-2 px-4 transition-all hover:opacity-90"
+                  style={dynamicStyles.buttonSecondary}
                   onClick={() => setShowCalendar(!showCalendar)}
                 >
                   <Calendar className="w-4 h-4 inline mr-2" />
@@ -314,11 +455,18 @@ function App() {
                 </button>
                 
                 {showCalendar && (
-                  <div className="absolute right-0 top-full mt-2 bg-white border-2 border-brutal-dark shadow-brutal p-4 z-50 w-64">
+                  <div className="absolute right-0 top-full mt-2 p-4 z-50 w-64" style={{ ...dynamicStyles.card, backgroundColor: theme.colors.card }}>
                     <div className="mb-3">
-                      <label className="font-heading font-bold text-sm block mb-2">Month</label>
+                      <label className={`font-bold text-sm block mb-2 ${theme.fonts.heading}`} style={dynamicStyles.text}>Month</label>
                       <select 
-                        className="w-full border-2 border-brutal-dark p-2 font-body text-sm focus:outline-none focus:ring-2 focus:ring-brutal-accent"
+                        className={`w-full p-2 text-sm focus:outline-none focus:ring-2 ${theme.fonts.body}`}
+                        style={{ 
+                          borderRadius: theme.borderRadius, 
+                          borderWidth: theme.borderWidth, 
+                          borderColor: theme.colors.border,
+                          backgroundColor: theme.colors.card,
+                          color: theme.colors.text,
+                        }}
                         value={selectedMonth}
                         onChange={(e) => setSelectedMonth(e.target.value)}
                       >
@@ -329,7 +477,7 @@ function App() {
                     </div>
                     
                     <div>
-                      <label className="font-heading font-bold text-sm block mb-2">Day</label>
+                      <label className={`font-bold text-sm block mb-2 ${theme.fonts.heading}`} style={dynamicStyles.text}>Day</label>
                       <div className="grid grid-cols-7 gap-1">
                         {Array.from({ length: maxDay }, (_, i) => i + 1).map(day => {
                           const dateString = `${selectedMonth} ${day}`;
@@ -341,15 +489,15 @@ function App() {
                               key={day}
                               onClick={() => hasReflection && jumpToDate(selectedMonth, day)}
                               disabled={!hasReflection}
-                              className={`
-                                aspect-square flex items-center justify-center text-sm font-body border-2
-                                ${isCurrent 
-                                  ? 'bg-brutal-accent text-white border-brutal-dark' 
-                                  : hasReflection 
-                                    ? 'bg-white hover:bg-brutal-bg border-brutal-dark/30' 
-                                    : 'bg-brutal-bg/50 text-brutal-text/30 border-transparent cursor-not-allowed'
-                                }
-                              `}
+                              className={`aspect-square flex items-center justify-center text-sm font-body border-2`}
+                              style={{
+                                borderRadius: theme.borderRadius,
+                                borderWidth: theme.borderWidth,
+                                backgroundColor: isCurrent ? theme.colors.accent : hasReflection ? theme.colors.card : theme.colors.bg,
+                                color: isCurrent ? '#FFFFFF' : hasReflection ? theme.colors.text : theme.colors.textMuted,
+                                borderColor: isCurrent ? theme.colors.border : hasReflection ? theme.colors.border : 'transparent',
+                                opacity: hasReflection ? 1 : 0.3,
+                              }}
                             >
                               {day}
                             </button>
@@ -358,15 +506,17 @@ function App() {
                       </div>
                     </div>
                     
-                    <div className="mt-3 pt-3 border-t border-brutal-dark/10 flex justify-between">
+                    <div className="mt-3 pt-3 flex justify-between" style={{ borderTopWidth: theme.borderWidth, borderColor: theme.colors.border }}>
                       <button 
-                        className="text-xs font-body text-brutal-text/60 hover:text-brutal-accent"
+                        className={`text-xs hover:opacity-70 ${theme.fonts.body}`}
+                        style={dynamicStyles.textMuted}
                         onClick={() => setShowCalendar(false)}
                       >
                         Cancel
                       </button>
                       <button 
-                        className="brutal-btn-secondary text-xs py-1 px-3"
+                        className="font-bold text-xs py-1 px-3 transition-all hover:opacity-90"
+                        style={dynamicStyles.buttonSecondary}
                         onClick={() => {
                           setCurrentIndex(getTodayIndex());
                           setShowCalendar(false);
@@ -385,15 +535,16 @@ function App() {
 
       {/* Main Content */}
       <main className="max-w-4xl mx-auto px-2 sm:px-0">
-        <div className="brutal-card bg-white overflow-hidden" ref={contentRef}>
+        <div className="overflow-hidden p-6 md:p-8" style={dynamicStyles.card} ref={contentRef}>
           {/* Date Badge */}
           <div className="flex items-center justify-between mb-6">
-            <div className="bg-brutal-accent2 text-white font-heading font-bold px-3 py-2 border-2 border-brutal-dark text-sm sm:text-base">
+            <div className="font-bold px-3 py-2 text-sm sm:text-base text-white" 
+              style={{ backgroundColor: theme.colors.accent2, borderRadius: theme.borderRadius, borderWidth: theme.borderWidth, borderColor: theme.colors.border }}>
               {reflection.date}
             </div>
             
             <div className="flex items-center gap-2">
-              <span className="font-body text-sm text-brutal-text/60">
+              <span className={`text-sm ${theme.fonts.body}`} style={dynamicStyles.textMuted}>
                 {currentIndex + 1} / {reflections.length}
               </span>
             </div>
@@ -402,31 +553,35 @@ function App() {
           {/* Quote */}
           <div className="mb-8">
             <div className="flex gap-4">
-              <Sparkles className="w-8 h-8 text-brutal-accent3 flex-shrink-0 mt-1" />
-              <blockquote className="font-heading text-xl md:text-2xl font-medium leading-relaxed text-brutal-dark">
+              <Sparkles className="w-8 h-8 flex-shrink-0 mt-1" style={{ color: theme.colors.accent3 }} />
+              <blockquote className={`text-xl md:text-2xl font-medium leading-relaxed ${theme.fonts.heading}`} style={dynamicStyles.text}>
                 "{reflection.quote}"
               </blockquote>
             </div>
           </div>
 
           {/* Source */}
-          <div className="bg-brutal-bg border-2 border-brutal-dark p-4 mb-8">
-            <p className="font-body text-sm text-brutal-text/70 mb-1">Source:</p>
-            <p className="font-heading font-semibold text-brutal-accent2">{reflection.source}</p>
+          <div className="p-4 mb-8" style={{ backgroundColor: theme.colors.bg, borderRadius: theme.borderRadius, borderWidth: theme.borderWidth, borderColor: theme.colors.border }}>
+            <p className={`text-sm mb-1 ${theme.fonts.body}`} style={dynamicStyles.textMuted}>Source:</p>
+            <p className={`font-semibold ${theme.fonts.heading}`} style={{ color: theme.colors.accent2 }}>{reflection.source}</p>
           </div>
 
           {/* Reflection Text */}
           <div className="mb-8">
-            <p className="font-body text-base leading-relaxed text-brutal-text/90 whitespace-pre-line">
+            <p className={`text-base leading-relaxed whitespace-pre-line ${theme.fonts.body}`} style={dynamicStyles.text}>
               {reflection.text}
             </p>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 border-t-2 border-brutal-dark/10">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6" style={{ borderTopWidth: theme.borderWidth, borderColor: theme.colors.border }}>
             <div className="flex items-center gap-2 w-full sm:w-auto justify-center">
               <button 
-                className={`action-btn bg-brutal-accent text-white font-heading font-bold px-3 py-2 border-2 border-brutal-dark shadow-brutal text-sm flex items-center gap-1 ${isFavorite ? '!bg-brutal-accent4' : ''}`}
+                className={`font-bold px-3 py-2 text-sm flex items-center gap-1 transition-all hover:opacity-90 ${isFavorite ? '' : ''}`}
+                style={{ 
+                  ...dynamicStyles.buttonPrimary, 
+                  backgroundColor: isFavorite ? theme.colors.accent4 : theme.colors.buttonPrimary 
+                }}
                 onClick={toggleFavorite}
               >
                 <Heart className={`w-4 h-4 ${isFavorite ? 'fill-current' : ''}`} />
@@ -434,7 +589,8 @@ function App() {
               </button>
               
               <button 
-                className="action-btn bg-brutal-accent2 text-white font-heading font-bold px-3 py-2 border-2 border-brutal-dark shadow-brutal text-sm flex items-center gap-1"
+                className="font-bold px-3 py-2 text-sm flex items-center gap-1 transition-all hover:opacity-90"
+                style={dynamicStyles.buttonSecondary}
                 onClick={shareReflection}
               >
                 <Share2 className="w-4 h-4" />
@@ -444,7 +600,8 @@ function App() {
 
             <div className="flex items-center gap-2">
               <button 
-                className="action-btn bg-brutal-accent2 text-white font-heading font-bold py-2 px-3 border-2 border-brutal-dark shadow-brutal"
+                className="font-bold py-2 px-3 transition-all hover:opacity-90"
+                style={dynamicStyles.buttonSecondary}
                 onClick={() => handleNavigation('prev')}
                 disabled={isAnimating}
                 aria-label="Previous reflection"
@@ -453,7 +610,8 @@ function App() {
               </button>
               
               <button 
-                className="action-btn bg-brutal-accent text-white font-heading font-bold py-2 px-3 border-2 border-brutal-dark shadow-brutal"
+                className="font-bold py-2 px-3 transition-all hover:opacity-90"
+                style={dynamicStyles.buttonPrimary}
                 onClick={() => handleNavigation('next')}
                 disabled={isAnimating}
                 aria-label="Next reflection"
@@ -467,13 +625,15 @@ function App() {
         {/* Saved Entries Button */}
         <div className="mt-8 text-center">
           <button 
-            className="brutal-btn-primary inline-flex items-center gap-2"
+            className="font-bold inline-flex items-center gap-2 py-3 px-6 transition-all hover:opacity-90"
+            style={dynamicStyles.buttonPrimary}
             onClick={() => setView('saved')}
           >
             <Heart className="w-5 h-5" />
             Saved Entries
             {favorites.length > 0 && (
-              <span className="bg-white text-brutal-accent font-bold px-2 py-0.5 text-sm border-2 border-brutal-dark">
+              <span className="font-bold px-2 py-0.5 text-sm" 
+                style={{ backgroundColor: theme.colors.card, color: theme.colors.accent, borderRadius: theme.borderRadius }}>
                 {favorites.length}
               </span>
             )}
@@ -483,7 +643,7 @@ function App() {
 
       {/* Footer */}
       <footer className="max-w-4xl mx-auto mt-12 text-center">
-        <p className="font-body text-sm text-brutal-text/50">
+        <p className={`text-sm ${theme.fonts.body}`} style={dynamicStyles.textMuted}>
           AA Daily Reflections · One Day at a Time
         </p>
       </footer>
