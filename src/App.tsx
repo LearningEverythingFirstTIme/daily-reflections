@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
 import { gsap } from 'gsap';
-import { Calendar, BookOpen, Heart, Share2, ChevronLeft, ChevronRight, Sparkles, ArrowLeft, Trash2, Palette } from 'lucide-react';
+import { Calendar, BookOpen, Heart, Share2, ChevronLeft, ChevronRight, Sparkles, ArrowLeft, Trash2, Palette, Library, ChevronDown } from 'lucide-react';
 import { reflections } from './data/reflections';
 import { themes, defaultTheme, type Theme } from './data/themes';
+import { literature, categories, type Category } from './data/literature';
 
-type View = 'daily' | 'saved';
+type View = 'daily' | 'saved' | 'literature';
 
 function App() {
   const [view, setView] = useState<View>('daily');
@@ -13,6 +14,10 @@ function App() {
     const saved = localStorage.getItem('aa-theme');
     return saved ? themes.find(t => t.id === saved) || defaultTheme : defaultTheme;
   });
+  
+  // Literature view state
+  const [selectedCategory, setSelectedCategory] = useState<Category | 'All'>('All');
+  const [expandedItem, setExpandedItem] = useState<string | null>(null);
   
   const getTodayIndex = () => {
     const today = new Date();
@@ -230,6 +235,202 @@ function App() {
     text: { color: theme.colors.text },
     textMuted: { color: theme.colors.textMuted },
   };
+
+  // Filter literature by category
+  const filteredLiterature = selectedCategory === 'All' 
+    ? literature 
+    : literature.filter(item => item.category === selectedCategory);
+
+  // Toggle expanded item
+  const toggleExpanded = (id: string) => {
+    setExpandedItem(expandedItem === id ? null : id);
+  };
+
+  // Literature View
+  if (view === 'literature') {
+    return (
+      <div ref={containerRef} className="min-h-screen p-4 md:p-8 transition-colors duration-300" style={dynamicStyles.bg}>
+        {/* Header */}
+        <header className="max-w-4xl mx-auto mb-8">
+          <div className="p-6 md:p-8" style={dynamicStyles.header}>
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div className="flex items-center gap-4">
+                <div className="p-3" style={{ backgroundColor: theme.colors.card, borderRadius: theme.borderRadius, borderWidth: theme.borderWidth, borderColor: theme.colors.border }}>
+                  <Library className="w-8 h-8" style={{ color: theme.colors.accent }} />
+                </div>
+                <div>
+                  <h1 className={`font-bold text-2xl md:text-3xl text-white ${theme.fonts.heading}`}>
+                    Meeting Literature
+                  </h1>
+                  <p className={`text-white/80 text-sm ${theme.fonts.body}`}>
+                    Quick reference guide for AA meetings
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <div className="relative" ref={themeRef}>
+                  <button 
+                    className="font-bold py-2 px-4 transition-all hover:opacity-90"
+                    style={dynamicStyles.buttonSecondary}
+                    onClick={() => setShowThemePicker(!showThemePicker)}
+                  >
+                    <Palette className="w-4 h-4 inline mr-2" />
+                    Theme
+                  </button>
+                  
+                  {showThemePicker && (
+                    <div className="absolute right-0 top-full mt-2 p-4 z-50 w-72" style={{ ...dynamicStyles.card, backgroundColor: theme.colors.card }}>
+                      <h3 className={`font-bold text-lg mb-3 ${theme.fonts.heading}`} style={dynamicStyles.text}>Select Theme</h3>
+                      {themes.map(t => (
+                        <button
+                          key={t.id}
+                          onClick={() => { setTheme(t); setShowThemePicker(false); }}
+                          className={`w-full text-left p-3 mb-2 rounded transition-all ${theme.id === t.id ? 'ring-2' : ''}`}
+                          style={{ 
+                            backgroundColor: theme.id === t.id ? theme.colors.accent + '20' : theme.colors.bg,
+                            borderRadius: theme.borderRadius,
+                            borderWidth: theme.borderWidth,
+                            borderColor: theme.colors.border,
+                          }}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded flex-shrink-0" style={{ backgroundColor: t.colors.accent, borderRadius: t.borderRadius }} />
+                            <div>
+                              <p className={`font-bold text-sm ${theme.fonts.heading}`} style={dynamicStyles.text}>{t.name}</p>
+                              <p className={`text-xs ${theme.fonts.body}`} style={dynamicStyles.textMuted}>{t.description}</p>
+                            </div>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                
+                <button 
+                  className="font-bold py-2 px-4 transition-all hover:opacity-90"
+                  style={dynamicStyles.buttonPrimary}
+                  onClick={() => setView('daily')}
+                >
+                  <ArrowLeft className="w-4 h-4 inline mr-2" />
+                  Back to Daily
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* Category Tabs */}
+        <main className="max-w-4xl mx-auto px-2 sm:px-0">
+          <div className="flex flex-wrap gap-2 mb-6">
+            <button
+              onClick={() => setSelectedCategory('All')}
+              className={`font-bold py-2 px-4 transition-all hover:opacity-90`}
+              style={{
+                backgroundColor: selectedCategory === 'All' ? theme.colors.buttonPrimary : theme.colors.card,
+                color: selectedCategory === 'All' ? '#FFFFFF' : theme.colors.text,
+                borderRadius: theme.borderRadius,
+                borderWidth: theme.borderWidth,
+                borderColor: theme.colors.border,
+                boxShadow: theme.id === 'neobrutalist' ? `2px 2px 0px 0px ${theme.colors.shadow}` : 'none',
+              }}
+            >
+              All
+            </button>
+            {categories.map(cat => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`font-bold py-2 px-4 transition-all hover:opacity-90`}
+                style={{
+                  backgroundColor: selectedCategory === cat ? theme.colors.buttonPrimary : theme.colors.card,
+                  color: selectedCategory === cat ? '#FFFFFF' : theme.colors.text,
+                  borderRadius: theme.borderRadius,
+                  borderWidth: theme.borderWidth,
+                  borderColor: theme.colors.border,
+                  boxShadow: theme.id === 'neobrutalist' ? `2px 2px 0px 0px ${theme.colors.shadow}` : 'none',
+                }}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Literature List */}
+          <div className="grid gap-4">
+            {filteredLiterature.map((item) => (
+              <div
+                key={item.id}
+                className="brutal-card transition-shadow hover:shadow-lg"
+                style={dynamicStyles.card}
+              >
+                <button
+                  onClick={() => toggleExpanded(item.id)}
+                  className="w-full p-6 text-left"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <div 
+                        className="font-bold px-3 py-1 text-sm flex-shrink-0 text-white"
+                        style={{ 
+                          backgroundColor: 
+                            item.category === 'Steps' ? theme.colors.accent :
+                            item.category === 'Traditions' ? theme.colors.accent2 :
+                            item.category === 'Prayers' ? theme.colors.accent3 :
+                            theme.colors.accent4,
+                          borderRadius: theme.borderRadius,
+                          borderWidth: theme.borderWidth,
+                          borderColor: theme.colors.border,
+                        }}
+                      >
+                        {item.category}
+                      </div>
+                      <h2 className={`font-bold text-lg md:text-xl ${theme.fonts.heading}`} style={dynamicStyles.text}>
+                        {item.title}
+                      </h2>
+                    </div>
+                    <ChevronDown 
+                      className={`w-6 h-6 flex-shrink-0 transition-transform duration-300`}
+                      style={{ 
+                        color: theme.colors.textMuted,
+                        transform: expandedItem === item.id ? 'rotate(180deg)' : 'rotate(0deg)'
+                      }}
+                    />
+                  </div>
+                </button>
+                
+                {expandedItem === item.id && (
+                  <div 
+                    className="px-6 pb-6"
+                    style={{ 
+                      borderTopWidth: theme.borderWidth, 
+                      borderColor: theme.colors.border,
+                    }}
+                  >
+                    <div className="pt-4">
+                      <pre 
+                        className={`whitespace-pre-wrap font-body text-base leading-relaxed ${theme.fonts.body}`}
+                        style={dynamicStyles.text}
+                      >
+                        {item.content}
+                      </pre>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </main>
+
+        {/* Footer */}
+        <footer className="max-w-4xl mx-auto mt-12 text-center">
+          <p className={`text-sm ${theme.fonts.body}`} style={dynamicStyles.textMuted}>
+            AA Daily Reflections · One Day at a Time
+          </p>
+        </footer>
+      </div>
+    );
+  }
 
   // Saved Entries View
   if (view === 'saved') {
@@ -632,10 +833,10 @@ function App() {
           </div>
         </div>
 
-        {/* Saved Entries Button */}
-        <div className="mt-8 text-center">
+        {/* Navigation Buttons */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <button 
-            className="font-bold inline-flex items-center gap-2 py-3 px-6 transition-all hover:opacity-90"
+            className="font-bold inline-flex items-center gap-2 py-3 px-6 transition-all hover:opacity-90 w-full sm:w-auto justify-center"
             style={dynamicStyles.buttonPrimary}
             onClick={() => setView('saved')}
           >
@@ -647,6 +848,15 @@ function App() {
                 {favorites.length}
               </span>
             )}
+          </button>
+          
+          <button 
+            className="font-bold inline-flex items-center gap-2 py-3 px-6 transition-all hover:opacity-90 w-full sm:w-auto justify-center"
+            style={dynamicStyles.buttonSecondary}
+            onClick={() => setView('literature')}
+          >
+            <Library className="w-5 h-5" />
+            Meeting Literature
           </button>
         </div>
       </main>
