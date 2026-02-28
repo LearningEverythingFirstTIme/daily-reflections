@@ -1,9 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
 import { gsap } from 'gsap';
-import { Calendar, BookOpen, Heart, Share2, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
+import { Calendar, BookOpen, Heart, Share2, ChevronLeft, ChevronRight, Sparkles, ArrowLeft, Trash2 } from 'lucide-react';
 import { reflections } from './data/reflections';
 
+type View = 'daily' | 'saved';
+
 function App() {
+  const [view, setView] = useState<View>('daily');
+  
   const getTodayIndex = () => {
     const today = new Date();
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -60,7 +64,6 @@ function App() {
         stagger: 0.1
       });
       
-      // Only animate the card buttons, not the header buttons
       gsap.from('.action-btn', {
         scale: 0.8,
         opacity: 0,
@@ -72,7 +75,7 @@ function App() {
     }, containerRef);
     
     return () => ctx.revert();
-  }, [currentIndex]);
+  }, [currentIndex, view]);
 
   const handleNavigation = (direction: 'prev' | 'next') => {
     if (isAnimating) return;
@@ -136,6 +139,11 @@ function App() {
     });
   };
 
+  const removeFavorite = (index: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setFavorites(prev => prev.filter(i => i !== index));
+  };
+
   const shareReflection = () => {
     const text = `"${reflection.quote}" - ${reflection.source}`;
     navigator.clipboard.writeText(text);
@@ -158,6 +166,118 @@ function App() {
     .map(r => parseInt(r.date.split(' ')[1]));
   const maxDay = Math.max(...daysInMonth);
 
+  // Saved Entries View
+  if (view === 'saved') {
+    return (
+      <div ref={containerRef} className="min-h-screen bg-brutal-bg p-4 md:p-8">
+        {/* Header */}
+        <header className="max-w-4xl mx-auto mb-8">
+          <div className="brutal-panel bg-brutal-accent p-6 md:p-8">
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div className="flex items-center gap-4">
+                <div className="bg-white p-3 border-2 border-brutal-dark">
+                  <Heart className="w-8 h-8 text-brutal-accent fill-brutal-accent" />
+                </div>
+                <div>
+                  <h1 className="font-heading font-bold text-2xl md:text-3xl text-white">
+                    Saved Entries
+                  </h1>
+                  <p className="font-body text-white/80 text-sm">
+                    {favorites.length} reflection{favorites.length !== 1 ? 's' : ''} saved
+                  </p>
+                </div>
+              </div>
+              
+              <button 
+                className="brutal-btn-secondary text-sm py-2 px-4"
+                onClick={() => setView('daily')}
+              >
+                <ArrowLeft className="w-4 h-4 inline mr-2" />
+                Back to Daily
+              </button>
+            </div>
+          </div>
+        </header>
+
+        {/* Saved Entries List */}
+        <main className="max-w-4xl mx-auto px-2 sm:px-0">
+          {favorites.length === 0 ? (
+            <div className="brutal-card bg-white text-center py-16">
+              <Heart className="w-16 h-16 text-brutal-text/20 mx-auto mb-4" />
+              <h2 className="font-heading font-bold text-xl text-brutal-text/60 mb-2">
+                No Saved Entries Yet
+              </h2>
+              <p className="font-body text-brutal-text/50 mb-6">
+                Click the heart button on any reflection to save it here.
+              </p>
+              <button 
+                className="brutal-btn-primary"
+                onClick={() => setView('daily')}
+              >
+                Browse Reflections
+              </button>
+            </div>
+          ) : (
+            <div className="grid gap-4">
+              {favorites.sort((a, b) => a - b).map(index => {
+                const fav = reflections[index];
+                return (
+                  <div
+                    key={index}
+                    className="brutal-card bg-white hover:shadow-brutal-hover transition-shadow"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="bg-brutal-accent2 text-white font-heading font-bold px-3 py-2 border-2 border-brutal-dark text-sm flex-shrink-0">
+                        {fav.date}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <blockquote className="font-heading text-lg font-medium text-brutal-dark mb-2">
+                          "{fav.quote}"
+                        </blockquote>
+                        <p className="font-body text-sm text-brutal-text/70 mb-3">
+                          {fav.source}
+                        </p>
+                        <p className="font-body text-sm text-brutal-text/80 line-clamp-2">
+                          {fav.text}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-end gap-2 mt-4 pt-4 border-t-2 border-brutal-dark/10">
+                      <button
+                        className="action-btn bg-brutal-accent text-white font-heading font-bold px-4 py-2 border-2 border-brutal-dark shadow-brutal text-sm"
+                        onClick={() => {
+                          setCurrentIndex(index);
+                          setView('daily');
+                        }}
+                      >
+                        View Full
+                      </button>
+                      <button
+                        className="action-btn bg-brutal-accent4 text-white font-heading font-bold px-3 py-2 border-2 border-brutal-dark shadow-brutal"
+                        onClick={(e) => removeFavorite(index, e)}
+                        title="Remove from saved"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </main>
+
+        {/* Footer */}
+        <footer className="max-w-4xl mx-auto mt-12 text-center">
+          <p className="font-body text-sm text-brutal-text/50">
+            AA Daily Reflections · One Day at a Time
+          </p>
+        </footer>
+      </div>
+    );
+  }
+
+  // Daily View
   return (
     <div ref={containerRef} className="min-h-screen bg-brutal-bg p-4 md:p-8">
       {/* Header */}
@@ -344,31 +464,21 @@ function App() {
           </div>
         </div>
 
-        {/* Favorites Section */}
-        {favorites.length > 0 && (
-          <div className="mt-8 brutal-card bg-brutal-accent3">
-            <h3 className="font-heading font-bold text-lg mb-4 flex items-center gap-2">
-              <Heart className="w-5 h-5 fill-brutal-dark" />
-              Saved Reflections ({favorites.length})
-            </h3>
-            
-            <div className="grid gap-3">
-              {favorites.map(index => {
-                const fav = reflections[index];
-                return (
-                  <button
-                    key={index}
-                    className="text-left bg-white border-2 border-brutal-dark p-3 hover:bg-brutal-bg transition-colors"
-                    onClick={() => setCurrentIndex(index)}
-                  >
-                    <p className="font-heading font-medium text-sm truncate">"{fav.quote}"</p>
-                    <p className="font-body text-xs text-brutal-text/60 mt-1">{fav.date}</p>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
+        {/* Saved Entries Button */}
+        <div className="mt-8 text-center">
+          <button 
+            className="brutal-btn-primary inline-flex items-center gap-2"
+            onClick={() => setView('saved')}
+          >
+            <Heart className="w-5 h-5" />
+            Saved Entries
+            {favorites.length > 0 && (
+              <span className="bg-white text-brutal-accent font-bold px-2 py-0.5 text-sm border-2 border-brutal-dark">
+                {favorites.length}
+              </span>
+            )}
+          </button>
+        </div>
       </main>
 
       {/* Footer */}
