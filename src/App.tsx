@@ -32,7 +32,8 @@ function App() {
         stagger: 0.1
       });
       
-      gsap.from('.brutal-btn', {
+      // Only animate the card buttons, not the header buttons
+      gsap.from('.action-btn', {
         scale: 0.8,
         opacity: 0,
         duration: 0.4,
@@ -180,25 +181,25 @@ function App() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 border-t-2 border-brutal-dark/10">
             <div className="flex items-center gap-2 w-full sm:w-auto justify-center">
               <button 
-                className={`brutal-btn text-sm py-2 px-3 flex items-center gap-1 ${isFavorite ? 'bg-brutal-accent4' : ''}`}
+                className={`action-btn bg-brutal-accent text-white font-heading font-bold px-3 py-2 border-2 border-brutal-dark shadow-brutal text-sm flex items-center gap-1 ${isFavorite ? '!bg-brutal-accent4' : ''}`}
                 onClick={toggleFavorite}
               >
-                <Heart className={`w-4 h-4 favorite-btn ${isFavorite ? 'fill-current' : ''}`} />
+                <Heart className={`w-4 h-4 ${isFavorite ? 'fill-current' : ''}`} />
                 <span className="hidden sm:inline">{isFavorite ? 'Saved' : 'Save'}</span>
               </button>
               
               <button 
-                className="brutal-btn-secondary text-sm py-2 px-3 flex items-center gap-1"
+                className="action-btn bg-brutal-accent2 text-white font-heading font-bold px-3 py-2 border-2 border-brutal-dark shadow-brutal text-sm flex items-center gap-1"
                 onClick={shareReflection}
               >
-                <Share2 className="w-4 h-4 share-btn" />
+                <Share2 className="w-4 h-4" />
                 <span className="hidden sm:inline">Copy</span>
               </button>
             </div>
 
             <div className="flex items-center gap-2">
               <button 
-                className="brutal-btn-secondary py-2 px-3"
+                className="action-btn bg-brutal-accent2 text-white font-heading font-bold py-2 px-3 border-2 border-brutal-dark shadow-brutal"
                 onClick={() => handleNavigation('prev')}
                 disabled={isAnimating}
                 aria-label="Previous reflection"
@@ -207,7 +208,7 @@ function App() {
               </button>
               
               <button 
-                className="brutal-btn py-2 px-3"
+                className="action-btn bg-brutal-accent text-white font-heading font-bold py-2 px-3 border-2 border-brutal-dark shadow-brutal"
                 onClick={() => handleNavigation('next')}
                 disabled={isAnimating}
                 aria-label="Next reflection"
