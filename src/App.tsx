@@ -17,6 +17,8 @@ function App() {
 
   const [currentIndex, setCurrentIndex] = useState(getTodayIndex);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedMonth, setSelectedMonth] = useState("January");
   const [favorites, setFavorites] = useState<number[]>(() => {
     const saved = localStorage.getItem('aa-favorites');
     return saved ? JSON.parse(saved) : [];
@@ -24,7 +26,25 @@ function App() {
   
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const calendarRef = useRef<HTMLDivElement>(null);
   const reflection = reflections[currentIndex];
+
+  // Close calendar when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (calendarRef.current && !calendarRef.current.contains(event.target as Node)) {
+        setShowCalendar(false);
+      }
+    };
+    
+    if (showCalendar) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showCalendar]);
 
   useEffect(() => {
     localStorage.setItem('aa-favorites', JSON.stringify(favorites));
@@ -78,6 +98,27 @@ function App() {
     });
   };
 
+  const jumpToDate = (month: string, day: number) => {
+    const dateString = `${month} ${day}`;
+    const index = reflections.findIndex(r => r.date === dateString);
+    if (index !== -1) {
+      setIsAnimating(true);
+      const tl = gsap.timeline({
+        onComplete: () => {
+          setCurrentIndex(index);
+          setIsAnimating(false);
+          setShowCalendar(false);
+        }
+      });
+      tl.to(contentRef.current, {
+        x: -50,
+        opacity: 0,
+        duration: 0.2,
+        ease: 'power2.in'
+      });
+    }
+  };
+
   const toggleFavorite = () => {
     setFavorites(prev => {
       if (prev.includes(currentIndex)) {
@@ -108,6 +149,15 @@ function App() {
 
   const isFavorite = favorites.includes(currentIndex);
 
+  // Get available months from reflections data
+  const availableMonths = [...new Set(reflections.map(r => r.date.split(' ')[0]))];
+  
+  // Get days for selected month
+  const daysInMonth = reflections
+    .filter(r => r.date.startsWith(selectedMonth))
+    .map(r => parseInt(r.date.split(' ')[1]));
+  const maxDay = Math.max(...daysInMonth);
+
   return (
     <div ref={containerRef} className="min-h-screen bg-brutal-bg p-4 md:p-8">
       {/* Header */}
@@ -134,13 +184,80 @@ function App() {
             </div>
             
             <div className="flex items-center gap-2">
-              <button 
-                className="brutal-btn-secondary text-sm py-2 px-4"
-                onClick={() => setCurrentIndex(getTodayIndex())}
-              >
-                <Calendar className="w-4 h-4 inline mr-2" />
-                Today
-              </button>
+              <div className="relative" ref={calendarRef}>
+                <button 
+                  className="brutal-btn-secondary text-sm py-2 px-4"
+                  onClick={() => setShowCalendar(!showCalendar)}
+                >
+                  <Calendar className="w-4 h-4 inline mr-2" />
+                  Select Date
+                </button>
+                
+                {showCalendar && (
+                  <div className="absolute right-0 top-full mt-2 bg-white border-2 border-brutal-dark shadow-brutal p-4 z-50 w-64">
+                    <div className="mb-3">
+                      <label className="font-heading font-bold text-sm block mb-2">Month</label>
+                      <select 
+                        className="w-full border-2 border-brutal-dark p-2 font-body text-sm focus:outline-none focus:ring-2 focus:ring-brutal-accent"
+                        value={selectedMonth}
+                        onChange={(e) => setSelectedMonth(e.target.value)}
+                      >
+                        {availableMonths.map(month => (
+                          <option key={month} value={month}>{month}</option>
+                        ))}
+                      </select>
+                    </div>
+                    
+                    <div>
+                      <label className="font-heading font-bold text-sm block mb-2">Day</label>
+                      <div className="grid grid-cols-7 gap-1">
+                        {Array.from({ length: maxDay }, (_, i) => i + 1).map(day => {
+                          const dateString = `${selectedMonth} ${day}`;
+                          const hasReflection = reflections.some(r => r.date === dateString);
+                          const isCurrent = reflection.date === dateString;
+                          
+                          return (
+                            <button
+                              key={day}
+                              onClick={() => hasReflection && jumpToDate(selectedMonth, day)}
+                              disabled={!hasReflection}
+                              className={`
+                                aspect-square flex items-center justify-center text-sm font-body border-2
+                                ${isCurrent 
+                                  ? 'bg-brutal-accent text-white border-brutal-dark' 
+                                  : hasReflection 
+                                    ? 'bg-white hover:bg-brutal-bg border-brutal-dark/30' 
+                                    : 'bg-brutal-bg/50 text-brutal-text/30 border-transparent cursor-not-allowed'
+                                }
+                              `}
+                            >
+                              {day}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    
+                    <div className="mt-3 pt-3 border-t border-brutal-dark/10 flex justify-between">
+                      <button 
+                        className="text-xs font-body text-brutal-text/60 hover:text-brutal-accent"
+                        onClick={() => setShowCalendar(false)}
+                      >
+                        Cancel
+                      </button>
+                      <button 
+                        className="brutal-btn-secondary text-xs py-1 px-3"
+                        onClick={() => {
+                          setCurrentIndex(getTodayIndex());
+                          setShowCalendar(false);
+                        }}
+                      >
+                        Go to Today
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
