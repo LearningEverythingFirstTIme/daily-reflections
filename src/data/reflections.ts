@@ -1839,5 +1839,186 @@ export const reflections: Reflection[] = [
     quote: "Above everything, we alcoholics must be rid of this selfishness. We must, or it kills us",
     source: "Alcoholics Anonymous p. 62",
     text: "Selfishness is at the root of my troubles. It drives me to drink, to lie, to hurt others. If I don't address this fundamental character defect, it will eventually kill me. The steps are designed to remove this selfishness and replace it with a spiritual way of life. Today, I work to be rid of selfishness."
+  },
+  // NOVEMBER
+  {
+    date: "November 1",
+    quote: "Gratitude unlocks the fullness of life",
+    source: "AA Slogan",
+    text: "When I came to AA, I had nothing to be grateful for. My life was in ruins. But as I stayed sober, I began to notice small blessings - a sunrise, a kind word, another day sober. Gratitude transformed my perspective. Instead of focusing on what I lacked, I began appreciating what I had. Today, I practice gratitude as a way of life."
+  },
+  {
+    date: "November 2",
+    quote: "Gratitude is an attitude, not a feeling",
+    source: "AA Slogan",
+    text: "I used to think I needed to feel grateful before I could practice gratitude. But I learned that gratitude is a choice, not an emotion. Even on difficult days, I can choose to be thankful. I can list my blessings and acknowledge the good in my life. The feeling often follows the action. Today, I choose gratitude regardless of my feelings."
+  },
+  {
+    date: "November 3",
+    quote: "A grateful alcoholic will never drink",
+    source: "AA Slogan",
+    text: "This simple saying contains profound truth. When I am truly grateful for my sobriety, I would never do anything to jeopardize it. Gratitude is a powerful safeguard against the first drink. When I focus on how much I have been given, I don't want to throw it away. Today, I stay grateful to stay sober."
+  },
+  {
+    date: "November 4",
+    quote: "Gratitude turns what we have into enough",
+    source: "AA Slogan",
+    text: "In my drinking days, I always wanted more. More money, more recognition, more possessions. Nothing was ever enough. But gratitude changed that. When I appreciate what I have, it becomes sufficient. I no longer need to chase after things to fill the emptiness inside. Today, I have enough because I am grateful."
+  },
+  {
+    date: "November 5",
+    quote: "We can be grateful for our trials because they make us stronger",
+    source: "Twelve Steps and Twelve Traditions p. 93",
+    text: "This was hard to accept. How could I be grateful for pain, loss, and difficulty? But I learned that my struggles have shaped me. My addiction led me to recovery. My bottom led me to AA. My character defects led me to the steps. Today, I can be grateful even for my difficulties because they brought me to where I am."
+  },
+  {
+    date: "November 6",
+    quote: "Gratitude is the memory of the heart",
+    source: "AA Slogan",
+    text: "I try to carry gratitude with me throughout my day. It's not just something I express at meetings or during prayer. It's a lens through which I see the world. When I look at my life through gratitude, everything changes. Problems become opportunities, burdens become blessings, and ordinary moments become extraordinary. Today, I let gratitude color my perception."
+  },
+  {
+    date: "November 7",
+    quote: "In gratitude, we find humility",
+    source: "AA Slogan",
+    text: "Gratitude and humility go hand in hand. When I am truly grateful, I acknowledge that I didn't achieve my sobriety alone. I needed help from my Higher Power, my sponsor, and the fellowship. Gratitude reminds me that I am part of something larger than myself. Today, I am grateful and humble."
+  },
+  {
+    date: "November 8",
+    quote: "Gratitude is the best medicine for discontent",
+    source: "AA Slogan",
+    text: "When I am restless, irritable, and discontent, gratitude is the cure. Instead of dwelling on what I don't have or what isn't going my way, I make a gratitude list. I write down everything I am thankful for, no matter how small. Soon, my discontent melts away and is replaced by appreciation. Today, I use gratitude as medicine."
+  },
+  {
+    date: "November 9",
+    quote: "We are given a daily reprieve, and for that we are grateful",
+    source: "Alcoholics Anonymous p. 85",
+    text: "Every morning I wake up sober is a gift. Every day I don't drink is a miracle. I didn't earn my sobriety through willpower or intelligence. It was given to me as a daily reprieve. This gift is contingent on my spiritual condition, and I am deeply grateful for it. Today, I thank my Higher Power for another day sober."
+  },
+  {
+    date: "November 10",
+    quote: "Gratitude is not only the greatest of virtues, but the parent of all others",
+    source: "AA Slogan",
+    text: "When I am grateful, other virtues follow naturally. Gratitude leads to generosity because I want to share my blessings. It leads to humility because I recognize what has been given to me. It leads to service because I want to give back. Gratitude is the foundation of character. Today, I build my character on gratitude."
+  },
+  {
+    date: "November 11",
+    quote: "We are not cured, but we are blessed",
+    source: "AA Slogan",
+    text: "I am not cured of alcoholism. I never will be. But I am blessed with a daily reprieve and a program that works. I am blessed with a fellowship that understands me. I am blessed with a spiritual life I never knew existed. My disease brought me to these blessings. Today, I count my blessings instead of my problems."
+  },
+  {
+    date: "November 12",
+    quote: "Gratitude makes sense of our past, brings peace for today, and creates a vision for tomorrow",
+    source: "AA Slogan",
+    text: "Looking back, I can be grateful for my past because it led me here. In the present, gratitude brings me peace and contentment. Looking forward, gratitude gives me hope and vision for what my life can become. Gratitude spans all time - past, present, and future. Today, I am grateful for my whole life."
+  },
+  {
+    date: "November 13",
+    quote: "The more grateful I am, the more beauty I see",
+    source: "AA Slogan",
+    text: "Gratitude is like a magnifying glass for beauty. When I am grateful, I notice things I would otherwise miss - the warmth of the sun, the smile of a friend, the peace of a quiet moment. The world becomes more beautiful when viewed through grateful eyes. Today, I look for beauty everywhere."
+  },
+  {
+    date: "November 14",
+    quote: "Gratitude is riches, complaint is poverty",
+    source: "AA Slogan",
+    text: "I can have everything and still be poor if I am not grateful. Or I can have little and be rich with appreciation. My financial situation doesn't determine my wealth - my attitude does. When I focus on what I have rather than what I lack, I am truly rich. Today, I am wealthy with gratitude."
+  },
+  {
+    date: "November 15",
+    quote: "Gratitude changes the pangs of memory into a tranquil joy",
+    source: "AA Slogan",
+    text: "My memories used to bring me pain - shame about my past, regret for wasted years, grief for lost relationships. But gratitude has transformed those pangs. Now I can look back with joy because I see how far I've come. My past is no longer a burden but a testament to my recovery. Today, I am grateful for my journey."
+  },
+  {
+    date: "November 16",
+    quote: "We can find something to be grateful for in every situation",
+    source: "AA Slogan",
+    text: "Even in my darkest moments, there is always something to be grateful for. Maybe it's just that I'm still breathing, or that I have a Higher Power who loves me, or that I have AA to turn to. Finding gratitude in difficulty is a spiritual practice that strengthens my recovery. Today, I look for gratitude even in hard times."
+  },
+  {
+    date: "November 17",
+    quote: "Gratitude is a vaccine, an antitoxin, and an antiseptic",
+    source: "AA Slogan",
+    text: "Gratitude protects me from many of the dangers that threaten my sobriety. It prevents self-pity, which can lead to drinking. It counters resentment, which poisons my spirit. It heals old wounds and keeps me healthy emotionally. Gratitude is essential medicine for the alcoholic. Today, I take my medicine."
+  },
+  {
+    date: "November 18",
+    quote: "When gratitude becomes an essential foundation in our lives, miracles begin to appear everywhere",
+    source: "AA Slogan",
+    text: "The more I practice gratitude, the more I notice miracles. Small blessings become obvious. Coincidences become guidance. Difficulties become opportunities. Gratitude opens my eyes to the miraculous nature of everyday life. Today, I expect miracles because I am grateful."
+  },
+  {
+    date: "November 19",
+    quote: "Gratitude is the sign of noble souls",
+    source: "AA Slogan",
+    text: "Being grateful is a mark of spiritual maturity. It shows that I recognize where my blessings come from and that I don't take things for granted. Gratitude elevates my character and makes me a better person. It is the quality of a soul that has grown through the program. Today, I cultivate a grateful soul."
+  },
+  {
+    date: "November 20",
+    quote: "As we express our gratitude, we must never forget that the highest appreciation is not to utter words, but to live by them",
+    source: "AA Slogan",
+    text: "Saying thank you is good, but living gratefully is better. I show my gratitude through my actions - by helping others, by staying sober, by being of service. My life becomes a living expression of thankfulness. Today, I live my gratitude rather than just speaking it."
+  },
+  {
+    date: "November 21",
+    quote: "Gratitude is when memory is stored in the heart and not in the mind",
+    source: "AA Slogan",
+    text: "I don't just mentally list my blessings - I feel them in my heart. Gratitude is an emotional experience, not just an intellectual exercise. When I truly feel grateful, it warms my heart and changes my whole being. Today, I let gratitude fill my heart."
+  },
+  {
+    date: "November 22",
+    quote: "Let us be grateful to the people who make us happy",
+    source: "AA Slogan",
+    text: "I am surrounded by people who have helped me in my recovery. My sponsor, my home group, my friends in the program - they all contribute to my happiness and sobriety. I am grateful for each person who has touched my life and supported my journey. Today, I thank God for the people in my life."
+  },
+  {
+    date: "November 23",
+    quote: "Gratitude is a quality similar to electricity: it must be produced and discharged and used up in order to exist at all",
+    source: "AA Slogan",
+    text: "Gratitude is not a static thing - it needs to be expressed to be real. I need to say thank you, write gratitude lists, and express appreciation to others. The more I express gratitude, the more I feel it. It grows through use. Today, I express my gratitude freely."
+  },
+  {
+    date: "November 24",
+    quote: "Gratitude is the fairest blossom which springs from the soul",
+    source: "AA Slogan",
+    text: "Gratitude is beautiful. It makes me beautiful inside. When I am grateful, I am at my best - kind, generous, and peaceful. Gratitude is the flower that grows from a soul nourished by the program. Today, I let gratitude bloom in my soul."
+  },
+  {
+    date: "November 25",
+    quote: "Wear gratitude like a cloak, and it will feed every corner of your life",
+    source: "AA Slogan",
+    text: "I try to wrap myself in gratitude. I put it on like clothing and wear it throughout my day. When gratitude surrounds me, it touches every part of my life - my relationships, my work, my play, my prayer. Everything is better when viewed with gratitude. Today, I wear gratitude everywhere I go."
+  },
+  {
+    date: "November 26",
+    quote: "Gratitude is a powerful catalyst for happiness",
+    source: "AA Slogan",
+    text: "If I want to be happy, gratitude is the shortcut. It is the most direct path to joy and contentment. When I focus on what I am thankful for, happiness follows naturally. I don't need to chase happiness - I just need to practice gratitude. Today, I choose gratitude and find happiness."
+  },
+  {
+    date: "November 27",
+    quote: "Gratitude is the wine for the soul. Go on. Get drunk",
+    source: "AA Slogan",
+    text: "I used to get drunk on alcohol, which brought me misery. Now I get drunk on gratitude, which brings me joy. I can be intoxicated with appreciation, overwhelmed with thankfulness, and filled with the spirit of gratitude. This is a high that never leads to a hangover. Today, I get drunk on gratitude."
+  },
+  {
+    date: "November 28",
+    quote: "Gratitude is not just about saying thank you. It is about living in a state of appreciation",
+    source: "AA Slogan",
+    text: "Gratitude is a way of life, not just a polite phrase. It is a state of being where I constantly recognize and appreciate the good in my life. I don't just say thank you - I live thank you. Every breath, every step, every moment is an opportunity for gratitude. Today, I live in a state of appreciation."
+  },
+  {
+    date: "November 29",
+    quote: "Gratitude is the key to a well-lived life",
+    source: "AA Slogan",
+    text: "The quality of my life is directly related to my level of gratitude. When I am grateful, my life feels full and meaningful. When I am ungrateful, even good things seem empty. Gratitude is the key that unlocks the door to a rich, satisfying life. Today, I use that key."
+  },
+  {
+    date: "November 30",
+    quote: "Gratitude turns denial into acceptance, chaos into order, confusion into clarity",
+    source: "AA Slogan",
+    text: "Gratitude has the power to transform my experience. It can take the mess of my life and make sense of it. It can turn my struggles into lessons, my losses into gains, my pain into growth. Gratitude is an alchemical force that changes everything it touches. Today, I let gratitude transform me."
   }
 ];
