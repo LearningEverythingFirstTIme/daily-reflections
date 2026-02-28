@@ -361,5 +361,192 @@ export const reflections: Reflection[] = [
     quote: "We trust infinite God rather than our finite selves",
     source: "Alcoholics Anonymous p. 68",
     text: "My self-reliance led me to alcoholism. I thought I could handle everything myself. But I was finite, limited, and ultimately powerless over alcohol. Recovery taught me to trust in an infinite God who has no limitations. God's power is available to me if I am willing to ask and receive. Today, I trust in God's infinite power."
+  },
+  // MARCH
+  {
+    date: "March 1",
+    quote: "We will suddenly realize that God is doing for us what we could not do for ourselves",
+    source: "Alcoholics Anonymous p. 84",
+    text: "There came a moment in my recovery when I realized that something had changed. I wasn't white-knuckling my way through sobriety anymore. God was doing for me what I could never do for myself. The obsession had been removed. This is the miracle of the program - we are restored to sanity not by our own willpower, but by a power greater than ourselves."
+  },
+  {
+    date: "March 2",
+    quote: "We are not cured of alcoholism. What we really have is a daily reprieve contingent on the maintenance of our spiritual condition",
+    source: "Alcoholics Anonymous p. 85",
+    text: "Recovery is not a cure. I am not magically transformed into a normal drinker. What I have is a daily reprieve - a 24-hour period of freedom from the compulsion to drink. But this reprieve depends on my spiritual condition. If I stop practicing the principles, if I drift away from my Higher Power, I am in danger. Today, I maintain my spiritual condition."
+  },
+  {
+    date: "March 3",
+    quote: "Every day is a day when we must carry the vision of God's will into all of our activities",
+    source: "Alcoholics Anonymous p. 85",
+    text: "Recovery isn't just about not drinking - it's about living in God's will throughout my day. Whether I'm at work, with family, or alone, I try to carry this vision with me. How would my Higher Power have me act in this situation? This is the practice of the Eleventh Step in daily life. Today, I carry God's will into all my activities."
+  },
+  {
+    date: "March 4",
+    quote: "How can I best serve Thee - Thy will (not mine) be done",
+    source: "Alcoholics Anonymous p. 85",
+    text: "This is the prayer that guides my day. Instead of asking God to give me what I want, I ask how I can serve. Instead of demanding my will be done, I surrender to God's will. This simple prayer reorients my entire day from self-centeredness to service. Today, I ask how I can best serve my Higher Power."
+  },
+  {
+    date: "March 5",
+    quote: "We are not fighting it, neither are we avoiding temptation. We feel as though we had been placed in a position of neutrality - safe and protected",
+    source: "Alcoholics Anonymous p. 85",
+    text: "In early sobriety, I was fighting cravings every day. It was exhausting. But as I worked the program, something shifted. I no longer felt like I was in a battle. I felt safe and protected, as if I had been placed in a neutral position where alcohol no longer had power over me. Today, I rest in this place of neutrality."
+  },
+  {
+    date: "March 6",
+    quote: "The problem has been removed. It does not exist for us",
+    source: "Alcoholics Anonymous p. 85",
+    text: "The problem of alcohol has been removed from my life. Not through my own power, but through the power of the program and my Higher Power. I don't have to fight against drinking because the desire has been lifted. This is the freedom that recovery offers. Today, I am free from the problem of alcohol."
+  },
+  {
+    date: "March 7",
+    quote: "We have not even sworn off. Instead, the problem has been removed",
+    source: "Alcoholics Anonymous p. 85",
+    text: "I didn't just swear off alcohol with a vow of willpower. That never worked for me before. Instead, the problem was actually removed from my life. The obsession, the compulsion, the mental twist - all lifted by a power greater than myself. I am not white-knuckling; I am free. Today, I am grateful for this removal."
+  },
+  {
+    date: "March 8",
+    quote: "It is not a matter of giving anything up. It is a matter of being given something else instead",
+    source: "Alcoholics Anonymous p. 85",
+    text: "I used to think sobriety meant giving up the thing I loved most. But I was wrong. I didn't give up anything - I was given something far better in return. I traded my misery for peace, my isolation for fellowship, my hopelessness for purpose. Today, I am grateful for what I have been given."
+  },
+  {
+    date: "March 9",
+    quote: "We have been born anew",
+    source: "Alcoholics Anonymous p. 85",
+    text: "Recovery feels like being born again into a new life. The old me - the drunk, the liar, the thief - is gone. A new person has emerged, someone capable of honesty, integrity, and love. This is the transformation that the program promises. Today, I embrace my new life."
+  },
+  {
+    date: "March 10",
+    quote: "We are breathing the rarefied air of the spiritual life",
+    source: "Alcoholics Anonymous p. 85",
+    text: "The spiritual life is different from ordinary existence. It's like breathing rarefied air - clearer, purer, more alive. I am no longer just surviving; I am truly living. The spiritual dimension gives depth and meaning to everything I do. Today, I breathe this spiritual air."
+  },
+  {
+    date: "March 11",
+    quote: "We are at Step Three. This is the step that separates the men from the boys",
+    source: "Twelve Steps and Twelve Traditions p. 34",
+    text: "Step Three is where the rubber meets the road. It's where I decide whether I'm going to run my own life or let God run it. Many people get stuck here because they're not willing to surrender. But those who take this step find a new freedom. Today, I practice the Third Step."
+  },
+  {
+    date: "March 12",
+    quote: "The first requirement is that we be convinced that any life run on self-will can hardly be a success",
+    source: "Twelve Steps and Twelve Traditions p. 37",
+    text: "I had to become convinced that my way wasn't working before I was willing to try something different. My life run on self-will had been a disaster. Relationships destroyed, opportunities lost, dignity surrendered. I needed to admit that I didn't know how to live. Today, I don't run my life on self-will."
+  },
+  {
+    date: "March 13",
+    quote: "Above everything, we alcoholics must be rid of this selfishness. We must, or it kills us",
+    source: "Alcoholics Anonymous p. 62",
+    text: "Selfishness is at the root of my troubles. It drives me to drink, to lie, to hurt others. If I don't address this fundamental character defect, it will eventually kill me. The steps are designed to remove this selfishness and replace it with a spiritual way of life. Today, I work to be rid of selfishness."
+  },
+  {
+    date: "March 14",
+    quote: "God makes that possible",
+    source: "Alcoholics Anonymous p. 62",
+    text: "I cannot remove my own selfishness. I've tried and failed. Only God can do this for me. When I turn my will and my life over to the care of God, I am given the power to change. The impossible becomes possible through divine help. Today, I let God remove my selfishness."
+  },
+  {
+    date: "March 15",
+    quote: "What comes to us alone may be garbled by our own rationalization and wishful thinking",
+    source: "Twelve Steps and Twelve Traditions p. 60",
+    text: "I cannot trust my own thinking. My alcoholic mind will twist things to suit my desires. I need the perspective of others - my sponsor, my home group, my fellows - to help me see clearly. The group conscience helps me avoid my own blind spots. Today, I listen to others."
+  },
+  {
+    date: "March 16",
+    quote: "The benefit of talking to another person is that we can get his direct comment and counsel on our situation",
+    source: "Twelve Steps and Twelve Traditions p. 60",
+    text: "Talking to another alcoholic gives me access to experience, strength, and hope that I don't have on my own. They can see things I can't see and offer guidance based on their own journey. This is why we don't do this program alone. Today, I reach out to others."
+  },
+  {
+    date: "March 17",
+    quote: "We cannot subscribe to the belief that this life is a vale of tears, though it once was just that for many of us",
+    source: "Alcoholics Anonymous p. 133",
+    text: "My life used to be miserable - a vale of tears. But recovery has changed that. I don't have to view life as suffering anymore. There is joy, peace, and happiness available to me now. The program has transformed my experience of living. Today, I embrace the joy of sobriety."
+  },
+  {
+    date: "March 18",
+    quote: "But it is clear that we made our own misery",
+    source: "Alcoholics Anonymous p. 133",
+    text: "I used to blame everyone and everything for my unhappiness. But the truth is, I made my own misery. My attitudes, my actions, my choices created the life I had. The good news is that if I made it, I can unmake it. I can choose differently. Today, I take responsibility for my happiness."
+  },
+  {
+    date: "March 19",
+    quote: "God has either removed your husband's liquor problem or He has not",
+    source: "Alcoholics Anonymous p. 140",
+    text: "This passage is about acceptance of others. I cannot control whether someone else gets sober or stays sober. That is between them and their Higher Power. My job is to focus on my own recovery and let God handle the rest. Today, I accept that I cannot control others."
+  },
+  {
+    date: "March 20",
+    quote: "If he is not a real alcoholic, we can do nothing for him",
+    source: "Alcoholics Anonymous p. 140",
+    text: "I cannot help someone who is not ready for help. If they are not truly alcoholic, they won't relate to our experience. If they are alcoholic but not ready, they won't accept what we offer. I can carry the message, but I cannot carry the alcoholic. Today, I focus on those who want help."
+  },
+  {
+    date: "March 21",
+    quote: "If he is an alcoholic, he will understand you at once",
+    source: "Alcoholics Anonymous p. 140",
+    text: "When I talk to another alcoholic who is ready, there is an instant connection. They understand what I'm saying because they've lived it. The language of alcoholism is universal among those who suffer from it. This is why we can help each other in ways no one else can. Today, I share my experience with others."
+  },
+  {
+    date: "March 22",
+    quote: "Describe your own case, but don't insist that he stop drinking",
+    source: "Alcoholics Anonymous p. 140",
+    text: "I cannot force anyone to get sober. All I can do is share my own experience and let them draw their own conclusions. If I try to push or control, I will likely push them away. But if I simply tell my story with honesty and love, I plant a seed that may grow. Today, I share without insisting."
+  },
+  {
+    date: "March 23",
+    quote: "Burn the idea into the consciousness of every man that he can get well regardless of anyone",
+    source: "Alcoholics Anonymous p. 98",
+    text: "Recovery is available to everyone, regardless of background, education, or circumstances. No one is too far gone. No case is hopeless. If I have a desire to stop drinking, there is a solution for me. This is the message we carry to those who still suffer. Today, I carry this message of hope."
+  },
+  {
+    date: "March 24",
+    quote: "The only thing you need to know about God is that God isn't you",
+    source: "AA Grapevine",
+    text: "I don't need a theological degree to have a Higher Power. I just need to understand that God is not me. There is something greater than my limited self that can help me. This simple understanding is enough to begin a spiritual life. Today, I remember that God isn't me."
+  },
+  {
+    date: "March 25",
+    quote: "Resentment is the number one offender. It destroys more alcoholics than anything else",
+    source: "Alcoholics Anonymous p. 64",
+    text: "Resentment is dangerous for alcoholics. It separates us from our Higher Power, from other people, and from peace of mind. If allowed to fester, it can lead us back to drinking. The Fourth Step helps us identify and release resentments. Today, I let go of resentments."
+  },
+  {
+    date: "March 26",
+    quote: "From it stem all forms of spiritual disease",
+    source: "Alcoholics Anonymous p. 64",
+    text: "Resentment is the root of many spiritual problems. When I hold onto anger and bitterness, I become spiritually sick. I disconnect from God and from my fellows. The only cure is to let it go through forgiveness and acceptance. Today, I work to be free from resentment."
+  },
+  {
+    date: "March 27",
+    quote: "We have to be willing to forgive, even if the other person doesn't deserve it",
+    source: "AA Grapevine",
+    text: "Forgiveness is not about the other person - it's about me. I forgive so that I can be free. Whether they deserve forgiveness or not is irrelevant. What matters is that I deserve peace. Today, I practice forgiveness for my own sake."
+  },
+  {
+    date: "March 28",
+    quote: "Holding onto anger is like drinking poison and expecting the other person to die",
+    source: "Buddhist Proverb, often quoted in AA",
+    text: "When I hold onto anger and resentment, I am the one who suffers. The other person may not even know I'm angry. My resentment hurts me, not them. Letting go is an act of self-care, not something I do for the other person. Today, I let go for my own health."
+  },
+  {
+    date: "March 29",
+    quote: "Forgiveness is letting go of all hope for a better past",
+    source: "Lily Tomlin, often quoted in AA",
+    text: "I cannot change what happened. No amount of resentment will rewrite history. Forgiveness means accepting the past as it is and releasing my demand that it should have been different. Today, I accept the past and move forward."
+  },
+  {
+    date: "March 30",
+    quote: "We are going to know a new freedom and a new happiness",
+    source: "Promises, Alcoholics Anonymous p. 83",
+    text: "Freedom from the obsession to drink. Freedom from the bondage of self. Freedom to live a full and meaningful life. This is what recovery offers. And along with freedom comes a happiness I never knew was possible. Today, I embrace my new freedom and happiness."
+  },
+  {
+    date: "March 31",
+    quote: "We will not regret the past nor wish to shut the door on it",
+    source: "Promises, Alcoholics Anonymous p. 83",
+    text: "My past, with all its pain and mistakes, has brought me to where I am today. Without it, I wouldn't have found this program or this way of life. I don't regret it because it has become the foundation of my ability to help others. Today, I am at peace with my past."
   }
 ];

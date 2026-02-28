@@ -4,10 +4,18 @@ import { Calendar, BookOpen, Heart, Share2, ChevronLeft, ChevronRight, Sparkles 
 import { reflections } from './data/reflections';
 
 function App() {
-  const [currentIndex, setCurrentIndex] = useState(() => {
+  const getTodayIndex = () => {
     const today = new Date();
-    return today.getDate() % reflections.length;
-  });
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const monthName = monthNames[today.getMonth()];
+    const day = today.getDate();
+    const dateString = `${monthName} ${day}`;
+    
+    const index = reflections.findIndex(r => r.date === dateString);
+    return index !== -1 ? index : 0;
+  };
+
+  const [currentIndex, setCurrentIndex] = useState(getTodayIndex);
   const [isAnimating, setIsAnimating] = useState(false);
   const [favorites, setFavorites] = useState<number[]>(() => {
     const saved = localStorage.getItem('aa-favorites');
@@ -128,7 +136,7 @@ function App() {
             <div className="flex items-center gap-2">
               <button 
                 className="brutal-btn-secondary text-sm py-2 px-4"
-                onClick={() => setCurrentIndex(new Date().getDate() % reflections.length)}
+                onClick={() => setCurrentIndex(getTodayIndex())}
               >
                 <Calendar className="w-4 h-4 inline mr-2" />
                 Today
