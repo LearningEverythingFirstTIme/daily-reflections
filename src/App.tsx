@@ -138,11 +138,11 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto">
-        <div className="brutal-card bg-white" ref={contentRef}>
+      <main className="max-w-4xl mx-auto px-2 sm:px-0">
+        <div className="brutal-card bg-white overflow-hidden" ref={contentRef}>
           {/* Date Badge */}
           <div className="flex items-center justify-between mb-6">
-            <div className="bg-brutal-accent2 text-white font-heading font-bold px-4 py-2 border-2 border-brutal-dark">
+            <div className="bg-brutal-accent2 text-white font-heading font-bold px-3 py-2 border-2 border-brutal-dark text-sm sm:text-base">
               {reflection.date}
             </div>
             
