@@ -104,6 +104,11 @@ function App() {
           }
           return prev === 0 ? reflections.length - 1 : prev - 1;
         });
+        // Animate the new content in
+        gsap.fromTo(contentRef.current, 
+          { x: direction === 'next' ? 50 : -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.3, ease: 'power2.out' }
+        );
         setIsAnimating(false);
       }
     });
@@ -126,6 +131,11 @@ function App() {
           setCurrentIndex(index);
           setIsAnimating(false);
           setShowCalendar(false);
+          // Animate the new content in
+          gsap.fromTo(contentRef.current, 
+            { x: 50, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.3, ease: 'power2.out' }
+          );
         }
       });
       tl.to(contentRef.current, {
